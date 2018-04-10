@@ -1,0 +1,335 @@
+<?php
+/**
+ * Sebastien Vignol
+ * 2016
+ */
+
+
+/**************************************
+ * INCLUSIONS
+ **************************************/
+
+// Reminder : when file not found, 'include' throws a warning where 'require' throws a fatal error.
+include get_template_directory() . '/assets/inc/disable_emoji.php';
+include get_template_directory() . '/assets/inc/shortcodes.php';
+
+
+
+/**************************************
+ * CONSTANTS
+ **************************************/
+
+define('CSS_VERSION', rand(0,9999));
+define('CFS_REVISIONS', true);                              // Revisions for CFS.
+define('IMG', get_bloginfo('template_url').'/assets/img/'); // Template image folder.
+define('JS' , get_bloginfo('template_url').'/assets/js/');  // Template js folder.
+define('CSS', get_bloginfo('template_url').'/assets/css/'); // Template css folder.
+
+
+
+/**************************************
+ * THEME SETUP
+ **************************************/
+
+/**
+ * Theme Support.
+ */
+add_theme_support('post-thumbnails');
+add_theme_support( 'html5', array(
+    'search-form',
+    'comment-form',
+    'comment-list',
+    'gallery',
+    'caption',
+) );
+
+
+/**
+ * Add admin CSS (accent color on blocks title).
+ */
+function my_custom_css()
+{
+    echo '<style>
+        .hndle.ui-sortable-handle, .acf-fc-layout-handle {background-color: #23282d !important;}
+        .hndle.ui-sortable-handle span, .acf-fc-layout-handle {color: #fff !important;}
+        .dashicons-location::before, .dashicons-tickets-alt::before, .dashicons-lightbulb::before {color: #00b9eb !important;}
+    </style>';
+}
+add_action('admin_head', 'my_custom_css');
+
+
+/**
+ * Register menus.
+ */
+function seb_theme_setup()
+{
+    register_nav_menu( 'pages-menu', __( 'Main menu', 'seb' ) );
+    
+    //load_theme_textdomain('seb');   // 1st arg = used domain name in gettext functions. Put fr_FR.po/fr_FR.mo in theme directory.
+}
+add_action( 'after_setup_theme', 'seb_theme_setup' );
+
+
+/**
+ * JavaScript detection.
+ */
+function seb_javascript_detection() {
+	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+}
+add_action( 'wp_head', 'seb_javascript_detection', 0 );
+
+
+
+/**************************************
+ * POST TYPE
+ **************************************/
+
+/*
+function seb_posttypes()
+{
+	register_post_type( 'post_type',
+		array(
+			'labels' => array(
+				'name' => __( '', 'seb' ),
+				'singular_name' => __( '', 'seb' )
+			),
+			'public' => true,
+			'has_archive' => true,
+            'menu_icon' => '',
+            'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+		)
+	);
+}
+add_action( 'init', 'seb_posttypes' );
+*/
+
+
+
+/**************************************
+ * FUNCTIONS
+ **************************************/
+
+/**
+ * Filters wp_title to print a neat <title> tag based on what is being viewed.
+ *
+ * @param string $title Default title text for current view.
+ * @param string $sep Optional separator.
+ * @return string The filtered title.
+ */
+function theme_name_wp_title( $title, $sep )
+{
+	if ( is_feed() ) {
+		return $title;
+	}
+	
+	global $page, $paged;
+
+	// Add the blog name
+	$title .= get_bloginfo( 'name', 'display' );
+
+	// Add the blog description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) ) {
+		$title .= " $sep $site_description";
+	}
+
+	// Add a page number if necessary:
+	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
+		$title .= " $sep " . sprintf( __( 'Page %s', '_s' ), max( $paged, $page ) );
+	}
+
+	return $title;
+}
+add_filter( 'wp_title', 'theme_name_wp_title', 10, 2 );
+
+
+/**
+ * Get posts by Post Type.
+ */
+function seb_get_posts_by_posttype($posttype, $limit=-1)
+{
+    $args = array(
+        'post_type' => $posttype,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'paged' => true,
+        'posts_per_page' => $limit);
+    
+    $posts = new WP_Query($args);
+    
+    return $posts;
+}
+
+
+/**
+ * Echoes the thumbnail URL of the current post.
+ */
+function seb_the_thumbnail($id=0)
+{
+    if (!$id) { $id = get_the_ID(); }
+    echo wp_get_attachment_url(get_post_thumbnail_id($id));
+}
+
+
+/**
+ * Echoes the thumbnail URL of the current post.
+ */
+function seb_the_dyn_cov($url='')
+{
+    if ( !$url ) { echo 'style="background-image:url(\'';seb_the_thumbnail();echo '\');"'; }
+    else { echo 'style="background-image:url(\''.$url.'\');"'; }
+}
+
+
+/**
+ * Custom languages list.
+ */
+function seb_the_languages()
+{
+    if ( function_exists('icl_get_languages') )
+    {
+        $languages = icl_get_languages('skip_missing=1');
+        if(!empty($languages))
+        {
+            echo '<div class="lang-switch">';
+            foreach($languages as $l){
+                echo '<a href="'.$l['url'].'"'.(!$l['active'] ? '' : ' class="active"').'>';
+                echo icl_disp_language($l['language_code']);
+                echo '</a>';
+            }
+            echo '</div>';
+        }
+    }
+}
+
+
+/**
+ * Echoes the translated permalink.
+ * Must be used within the Loop.
+ */
+function seb_the_translated_permalink($id, $post_type='page')
+{
+    if(function_exists('icl_object_id')) {
+        $id = icl_object_id($id, $post_type, true);
+    }
+    echo get_permalink($id);
+}
+
+
+/**
+ * Echoes the excerpt of a post, and cuts the end if too long.
+ * If cut, $end is appended to the excerpt.
+ * Must be used within the Loop.
+ */
+function seb_the_excerpt($size = 150, $end = '...')
+{
+    $ex = get_the_excerpt();
+    $ex = substr($ex, 0, $size);
+    if( strlen($ex) >= $size )
+        $ex = $ex . $end;
+    echo $ex;
+}
+
+
+/**
+ * Echoes a text field from CFS.
+ */
+function seb_cfs($field)
+{
+    echo CFS()->get($field);
+}
+
+
+/**
+ * Echoes URL param with defined CSS version.
+ */
+function css_version($echo=TRUE)
+{
+    if ( $echo ) {
+        echo '?v='.CSS_VERSION;
+    }
+    else {
+        return '?v='.CSS_VERSION;
+    }
+}
+
+
+/**
+ * Display icons with URL sharing. Use this within the Loop.
+ */
+function seb_sharing()
+{
+    ?>
+    <div class="paf-sharing">
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode(get_the_permalink()); ?>">
+            <img alt="Facebook" src="<?php bloginfo('template_url') ?>/assets/img/ssba_facebook.png">
+        </a>
+        <a target="_blank" href="https://twitter.com/share?url=<?php echo urlencode(get_the_permalink()) ?>&hashtags=Brasserie,Silly&text=<?php echo urlencode(get_the_title()) ?>">
+            <img alt="Twitter" src="<?php bloginfo('template_url') ?>/assets/img/ssba_twitter.png">
+        </a>
+        <a target="_blank" href="https://pinterest.com/pin/create/button/?url=<?php echo urlencode(get_the_permalink()) ?>&media=<?php echo urlencode(seb_get_the_thumbnail()) ?>&description=<?php echo urlencode(get_the_title()) ?>">
+            <img alt="Pinterest" src="<?php bloginfo('template_url') ?>/assets/img/ssba_pinterest.png">
+        </a>
+        <a href="mailto:?&subject=<?php bloginfo('name'); echo ' : '; the_title() ?>&body=<?php echo urlencode(get_the_permalink()) ?>">
+            <img alt="Email" src="<?php bloginfo('template_url') ?>/assets/img/ssba_email.png">
+        </a>
+    </div>
+    <?php
+}
+
+
+/**
+ * Uses the post category to get related posts.
+ */
+function seb_related_posts($nb=4)
+{
+    global $post;
+    
+    $cats = array();
+    $categories = get_the_category(); // Get all categories for this post.
+
+    foreach($categories as $category) {
+        array_push($cats, $category->cat_ID);
+    }
+    
+    $args = array(
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'post_type' => 'post',
+        'numberposts' => $nb,
+        'post__not_in' => array($post->ID),
+        'category__in' => $cats
+    );
+
+    return get_posts($args);
+}
+
+
+function seb_img($filename)
+{
+    echo IMG.$filename;
+}
+
+
+function seb_js($path_from_theme)
+{
+    echo '<script src="'.get_bloginfo('template_url').'/'.$path_from_theme.'"></script>';
+}
+
+
+function seb_css($path_from_theme)
+{
+    //echo CSS.$filename.css_version(FALSE);
+    echo '<link href="'.get_bloginfo('template_url').'/'.$path_from_theme.css_version(FALSE).'" rel="stylesheet" />';
+}
+
+
+/**
+ * Help me mofocker.
+ */
+function vd($var, $label='')
+{
+    echo '<pre>'.$label;
+    var_dump($var);
+    echo '</pre>';
+}

@@ -1,0 +1,21 @@
+{
+    "name": "wp-theme-sebastien",
+    "version": "1.0.0",
+    "description": "Sébastien's Wordpress boilerplate",
+    "main": "gulpfile.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Sébastien Vignol",
+    "license": "ISC",
+
+    "devDependencies" : {
+        "gulp": "latest",
+        "gulp-sass": "latest",
+        "gulp-postcss": "latest",
+        "autoprefixer": "latest",
+        "gulp-minifier": "latest",
+        "gulp-concat": "latest",
+        "gulp-sourcemaps": "latest"
+    }
+}

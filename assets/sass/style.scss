@@ -1,0 +1,178 @@
+@import 'variables';
+@import 'mixins';
+
+.xdebug-var-dump,.xdebug-var-dump *, .xdebug-error, .xdebug-error * {font-size: 16px !important;}
+
+
+/**************************************
+ * TAGS
+ **************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    font-size: $font-size;
+    color: $font-color;
+    font-family: $font-family;
+}
+
+a {text-decoration: none;}
+a img {border: none;}
+
+*:focus {outline: 0 !important;}
+
+select {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+/**************************************
+ * GLOBAL CLASSES
+ **************************************/
+
+.dyn-cov {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.dyn-con {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+
+    &.alignleft {float: left;clear: both; margin: 15px 15px 15px 0;}
+    &.aligncenter {display: block; margin: 0 auto;clear: both; padding: 0 15px 15px 15px;}
+    &.alignright {float: right;clear: both; margin: 15px 0 15px 15px;}
+}
+
+.tr {
+    transition: .2s;
+}
+
+.container {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    
+    @include laptop {
+        width: 100%;
+    }
+}
+
+.pad {padding: 50px;}
+
+*[class*='btn'] {
+    display: inline-block;
+    padding: 5em 1.5em;
+    font-family: $font-family;
+    font-weight: $normal;
+    border: 2px solid transparent;
+    cursor: pointer;
+    background-color: $primary;
+    color: #fff;
+    text-transform: uppercase;
+    
+    @extend .tr;
+}
+
+*[class*='btn']:hover {
+    background-color: darken($primary, 10%);
+}
+
+
+/**************************************
+ * ENTRY CONTENT FORMATTING
+ **************************************/
+
+.richtext {
+    
+    p {
+        margin-bottom: 1em;
+        font-size: 1rem;
+        line-height: 1.5em;
+        
+        &:last-child {margin-bottom: 0;}
+    }
+    
+    pre, blockquote {
+        background: #eee;
+        padding: 10px;
+        overflow-x: scroll;
+        margin-bottom: 20px;
+    }
+    
+    ol, ul {
+        padding-left: 30px;
+        margin-bottom: 20px;
+        
+        li {
+            font-size: 0.875rem;
+        }
+    }
+    
+    hr {
+        border: none;
+        border-bottom: 1px solid #6EC9F1;
+        margin: 10px 0;
+    }
+    
+    h1 {font-size: 3rem;   margin-bottom: 1.000rem;}
+    h2 {font-size: 2.4rem; margin-bottom: 0.625rem;}
+    h3 {font-size: 1.4rem; margin-bottom: 0.375rem;}
+    h4 {font-size: 1.2rem; margin-bottom: 0rem;}
+    h5 {font-size: 1rem;   margin-bottom: 0rem;}
+    h6 {font-size: 1rem;   margin-bottom: 0rem;}
+}
+
+
+/**************************************
+ * THEME
+ **************************************/
+
+.pagination {
+    margin-top: 30px;
+    
+    text-align: center;
+    span, a {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1.9em;
+        padding: 0 10px;
+        border-radius: 3px;
+    }
+    
+    span {
+        background-color: $primary;
+        color: #fff;
+    }
+    
+    a:hover {
+        color: #fff;
+        background-color: lighten($primary, 50%);
+    }
+}
+
+.navigation {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+    .menu-item {
+        a {
+            display: inline-block;
+            line-height: 3em;
+            padding: 0 1.5em;
+        }
+    }
+}
