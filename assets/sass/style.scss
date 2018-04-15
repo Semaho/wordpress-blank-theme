@@ -21,7 +21,10 @@ html, body {
     font-family: $font-family;
 }
 
-a {text-decoration: none;}
+a {
+    text-decoration: none;
+    color: inherit;
+}
 a img {border: none;}
 
 *:focus {outline: 0 !important;}

@@ -32,6 +32,17 @@ define('CSS', get_bloginfo('template_url').'/assets/css/'); // Template css fold
  **************************************/
 
 /**
+ * Enqueue scripts.
+ */
+function seb_add_theme_scripts()
+{
+    wp_enqueue_style( 'theme', get_template_directory_uri() . '/assets/dist/css/style.min.css', array(), CSS_VERSION, 'all');
+
+    wp_enqueue_script( 'scripts', get_template_directory_uri() . '/assets/dist/js/scripts.min.js', array ( 'jquery' ), CSS_VERSION, true);
+}
+add_action( 'wp_enqueue_scripts', 'seb_add_theme_scripts' );
+
+/**
  * Theme Support.
  */
 add_theme_support('post-thumbnails');

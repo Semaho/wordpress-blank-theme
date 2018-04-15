@@ -37,7 +37,6 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
     return gulp.src([
-            './assets/js/jquery-3.2.1.min.js',
             './assets/js/seb.js'
         ])
         .pipe(minify({
