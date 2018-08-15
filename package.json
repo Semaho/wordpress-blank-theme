@@ -14,8 +14,9 @@
         "gulp-sass": "latest",
         "gulp-postcss": "latest",
         "autoprefixer": "latest",
-        "gulp-minifier": "latest",
         "gulp-concat": "latest",
-        "gulp-sourcemaps": "latest"
+        "gulp-cssnano": "^2.1.3",
+        "gulp-sourcemaps": "latest",
+        "gulp-uglify": "^3.0.1"
     }
 }

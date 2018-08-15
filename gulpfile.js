@@ -2,7 +2,8 @@ var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
     postcss      = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
-    minify       = require('gulp-minifier'),
+    cssnano      = require('gulp-cssnano'),
+    uglify       = require('gulp-uglify'),
     concat       = require('gulp-concat'),
     sourcemaps   = require('gulp-sourcemaps');
     //flatten      = require('gulp-flatten');
@@ -17,13 +18,7 @@ gulp.task('styles', function() {
         .pipe(sourcemaps.init())
             .pipe(sass().on('error', sass.logError))
             .pipe(postcss([ autoprefixer({ browsers: ['> 1%'] }) ]))
-            .pipe(minify({
-                minify: true,
-                collapseWhitespace: true,
-                conservativeCollapse: true,
-                minifyJS: true,
-                minifyCSS: true
-            }))
+            .pipe(cssnano())
             .pipe(concat('style.min.css'))
             //.pipe(flatten()) // Ignore directory hierarchy.
         .pipe(sourcemaps.write('./maps'))
@@ -39,14 +34,10 @@ gulp.task('scripts', function() {
     return gulp.src([
             './assets/js/seb.js'
         ])
-        .pipe(minify({
-            minify: true,
-            collapseWhitespace: true,
-            conservativeCollapse: true,
-            minifyJS: true,
-            minifyCSS: true
-        }))
+        .pipe(sourcemaps.init())
+        .pipe(uglify())
         .pipe(concat('scripts.min.js'))
+        .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('./assets/dist/js'))
 });
 
