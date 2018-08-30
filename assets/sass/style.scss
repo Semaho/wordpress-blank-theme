@@ -79,14 +79,16 @@ img {
 
 .pad {padding: 50px;}
 
-*[class*='btn'] {
+.btn {
     display: inline-block;
-    padding: 0.7em 2em;
+    padding: 0.8em 2em;
+    min-width: 130px;
+    text-align: center;
     font-size: 0.75rem;
     font-family: $font-family;
     font-weight: $regular;
     line-height: 1em;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     cursor: pointer;
     background-color: $secondary;
     color: #fff;
@@ -94,10 +96,19 @@ img {
     appearance: none;
     
     @extend .tr;
-}
 
-*[class*='btn']:hover {
-    background-color: darken($primary, 10%);
+    &:hover {
+        background-color: darken($secondary, 10%);
+    }
+
+    &.btn--o {
+        border-color: $light;
+        background-color: transparent;
+
+        &:hover {
+            background-color: transparentize($light, 0.9);
+        }
+    }
 }
 
 

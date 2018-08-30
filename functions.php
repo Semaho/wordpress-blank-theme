@@ -19,7 +19,7 @@ include get_template_directory() . '/assets/inc/shortcodes.php';
  * CONSTANTS
  **************************************/
 
-define('CSS_VERSION', rand(0,9999));
+define('CSS_VERSION', wp_get_theme()->get('Version'));
 define('CFS_REVISIONS', true);                              // Revisions for CFS.
 define('IMG', get_bloginfo('template_url').'/assets/img/'); // Template image folder.
 define('JS' , get_bloginfo('template_url').'/assets/js/');  // Template js folder.
