@@ -1,21 +1,27 @@
-$font-size  : 16px;
+$rem        : 16px;
 $font-color : #333;
 $font-family: "Helvetica Neue", "Helvetica", sans-serif;
 
 $thin       : 100;
-$extra-light: 200;
+$extralight : 200;
 $book       : 200;
-$light      : 300;
+$flight     : 300;
 $regular    : 400;
 $medium     : 500;
-$semi-bold  : 600;
+$semibold   : 600;
 $bold       : 700;
-$extra-bold : 800;
-$ultra-bold : 900;
+$extrabold  : 800;
+$ultrabold  : 900;
 
 $primary  : #333;
 $secondary: #000;
 $dark     : #333;
 $light    : #FFF;
 
+$container: 1200px;
+
 $grid-gap : 3rem;
+
+$spacing-small  : 2rem;
+$spacing-medium : 4rem;
+$spacing-large  : 6rem;

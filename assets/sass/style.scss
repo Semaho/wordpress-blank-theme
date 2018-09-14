@@ -16,7 +16,7 @@
 
 html, body {
     width: 100%;
-    font-size: $font-size;
+    font-size: $rem;
     color: $font-color;
     font-family: $font-family;
     -webkit-font-smoothing: antialiased;
@@ -69,8 +69,7 @@ img {
     width: 1024px;
     margin: 0 auto;
 	
-	// 1024 + 2 * 1rem
-    @media screen and (max-width: 1056px) {
+    @media screen and (max-width: #{$container+2*$rem}) {
         width: 100%;
         padding-left: 1rem;
         padding-right: 1rem;
