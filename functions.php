@@ -156,6 +156,7 @@ add_filter( 'wp_title', 'theme_name_wp_title', 10, 2 );
 
 /**
  * Get posts by Post Type.
+ * Use wp_reset_postdata() after.
  */
 function seb_get_posts_by_posttype($posttype, $limit=-1)
 {
