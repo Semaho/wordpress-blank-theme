@@ -10,8 +10,8 @@
  **************************************/
 
 // Reminder : when file not found, 'include' throws a warning where 'require' throws a fatal error.
-include get_template_directory() . '/assets/inc/disable_emoji.php';
-include get_template_directory() . '/assets/inc/shortcodes.php';
+include get_stylesheet_directory_uri() . '/assets/inc/disable_emoji.php';
+include get_stylesheet_directory_uri() . '/assets/inc/shortcodes.php';
 
 
 
@@ -21,9 +21,9 @@ include get_template_directory() . '/assets/inc/shortcodes.php';
 
 define('CSS_VERSION', wp_get_theme()->get('Version'));
 define('CFS_REVISIONS', true);                              // Revisions for CFS.
-define('IMG', get_bloginfo('template_url').'/assets/img/'); // Template image folder.
-define('JS' , get_bloginfo('template_url').'/assets/js/');  // Template js folder.
-define('CSS', get_bloginfo('template_url').'/assets/css/'); // Template css folder.
+define('IMG', get_stylesheet_directory_uri().'/assets/img/'); // Template image folder.
+define('JS' , get_stylesheet_directory_uri().'/assets/js/');  // Template js folder.
+define('CSS', get_stylesheet_directory_uri().'/assets/css/'); // Template css folder.
 
 
 
@@ -36,9 +36,9 @@ define('CSS', get_bloginfo('template_url').'/assets/css/'); // Template css fold
  */
 function seb_add_theme_scripts()
 {
-    wp_enqueue_style( 'theme', get_template_directory_uri() . '/assets/dist/css/style.min.css', array(), CSS_VERSION, 'all');
+    wp_enqueue_style( 'theme', get_stylesheet_directory_uri() . '/assets/dist/css/style.min.css', array(), CSS_VERSION, 'all');
 
-    wp_enqueue_script( 'scripts', get_template_directory_uri() . '/assets/dist/js/scripts.min.js', array ( 'jquery' ), CSS_VERSION, true);
+    wp_enqueue_script( 'scripts', get_stylesheet_directory_uri() . '/assets/dist/js/scripts.min.js', array ( 'jquery' ), CSS_VERSION, true);
 }
 add_action( 'wp_enqueue_scripts', 'seb_add_theme_scripts' );
 
