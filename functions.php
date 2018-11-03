@@ -337,6 +337,36 @@ function seb_css($path_from_theme)
 
 
 /**
+ * Safely returns specified key value from $_GET.
+ */
+function seb_get( $key )
+{
+    return isset($_GET[$key]) ? htmlspecialchars($_GET[$key]) : null;
+}
+
+
+/**
+ * Echoes a <select> tag with options.
+ * @var $options  Array  of arrays with 'key' and 'value' keys.
+ * @var $default  Array  Default key and value.
+ * @var $selected String Selected key.
+ * @var $name     String Name attribute.
+ * @var $id       String Id attribute.
+ * @var $class    String Class attribute.
+ */
+function seb_build_select_tag($options, $default, $selected=null, $name=null, $id=null, $class=null)
+{
+    echo '<select'.($id?' id="'.$id.'"':'').($name?' name="'.$name.'"':'').($class?' class="'.$class.'"':'').'>';
+    echo '<option value="'.$default['key'].'"'.(empty($selected)?' selected':'').'>'.$default['value'].'</option>';
+    foreach ( $options as $option )
+    {
+        echo '<option value="'.$option['key'].'"'.($selected==$option['key']?' selected':'').'>'.$option['value'].'</option>';
+    }
+    echo '</select>';
+}
+
+
+/**
  * Help me mofocker.
  */
 function vd($var, $label='')
