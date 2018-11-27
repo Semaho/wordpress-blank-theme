@@ -32,7 +32,8 @@ define('CSS', get_stylesheet_directory_uri().'/assets/css/'); // Template css fo
  **************************************/
 
 /**
- * Enqueue scripts.
+ * Enqueue scrip
+ * ts.
  */
 function seb_add_theme_scripts()
 {
@@ -45,6 +46,7 @@ add_action( 'wp_enqueue_scripts', 'seb_add_theme_scripts' );
 /**
  * Theme Support.
  */
+
 add_theme_support('post-thumbnails');
 add_theme_support( 'html5', array(
     'search-form',
@@ -58,6 +60,7 @@ add_theme_support( 'html5', array(
 /**
  * Add admin CSS (accent color on blocks title).
  */
+
 function my_custom_css()
 {
     echo '<style>
@@ -72,6 +75,7 @@ add_action('admin_head', 'my_custom_css');
 /**
  * Register menus.
  */
+
 function seb_theme_setup()
 {
     register_nav_menu( 'pages-menu', __( 'Main menu', 'seb' ) );
@@ -84,10 +88,11 @@ add_action( 'after_setup_theme', 'seb_theme_setup' );
 /**
  * JavaScript detection.
  */
+
 function seb_javascript_detection() {
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 }
-add_action( 'wp_head', 'seb_javascript_detection', 0 );
+//add_action( 'wp_head', 'seb_javascript_detection', 0 );
 
 
 
@@ -127,6 +132,7 @@ add_action( 'init', 'seb_posttypes' );
  * @param string $sep Optional separator.
  * @return string The filtered title.
  */
+
 function theme_name_wp_title( $title, $sep )
 {
 	if ( is_feed() ) {
@@ -158,6 +164,7 @@ add_filter( 'wp_title', 'theme_name_wp_title', 10, 2 );
  * Get posts by Post Type.
  * Use wp_reset_postdata() after.
  */
+
 function seb_get_posts_by_posttype($posttype, $limit=-1)
 {
     $args = array(
@@ -176,6 +183,7 @@ function seb_get_posts_by_posttype($posttype, $limit=-1)
 /**
  * Echoes the thumbnail URL of the current post.
  */
+
 function seb_the_thumbnail($id=0)
 {
     if (!$id) { $id = get_the_ID(); }
@@ -186,6 +194,7 @@ function seb_the_thumbnail($id=0)
 /**
  * Echoes the thumbnail URL of the current post.
  */
+
 function seb_the_dyn_cov($url='')
 {
     if ( !$url ) { echo 'style="background-image:url(\'';seb_the_thumbnail();echo '\');"'; }
@@ -196,6 +205,7 @@ function seb_the_dyn_cov($url='')
 /**
  * Custom languages list.
  */
+
 function seb_the_languages()
 {
     if ( function_exists('icl_get_languages') )
@@ -204,7 +214,8 @@ function seb_the_languages()
         if(!empty($languages))
         {
             echo '<div class="lang-switch">';
-            foreach($languages as $l){
+            foreach($languages as $l)
+            {
                 echo '<a href="'.$l['url'].'"'.(!$l['active'] ? '' : ' class="active"').'>';
                 echo icl_disp_language($l['language_code']);
                 echo '</a>';
@@ -219,6 +230,7 @@ function seb_the_languages()
  * Echoes the translated permalink.
  * Must be used within the Loop.
  */
+
 function seb_the_translated_permalink($id, $post_type='page')
 {
     if(function_exists('icl_object_id')) {
@@ -233,6 +245,7 @@ function seb_the_translated_permalink($id, $post_type='page')
  * If cut, $end is appended to the excerpt.
  * Must be used within the Loop.
  */
+
 function seb_the_excerpt($size = 150, $end = '...')
 {
     $ex = get_the_excerpt();
@@ -244,17 +257,9 @@ function seb_the_excerpt($size = 150, $end = '...')
 
 
 /**
- * Echoes a text field from CFS.
- */
-function seb_cfs($field)
-{
-    echo CFS()->get($field);
-}
-
-
-/**
  * Echoes URL param with defined CSS version.
  */
+
 function css_version($echo=TRUE)
 {
     if ( $echo ) {
@@ -269,10 +274,11 @@ function css_version($echo=TRUE)
 /**
  * Display icons with URL sharing. Use this within the Loop.
  */
+
 function seb_sharing()
 {
     ?>
-    <div class="paf-sharing">
+    <div class="socials">
         <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode(get_the_permalink()); ?>">
             <img alt="Facebook" src="<?php bloginfo('template_url') ?>/assets/img/ssba_facebook.png">
         </a>
@@ -293,6 +299,7 @@ function seb_sharing()
 /**
  * Uses the post category to get related posts.
  */
+
 function seb_related_posts($nb=4)
 {
     global $post;
@@ -317,28 +324,20 @@ function seb_related_posts($nb=4)
 }
 
 
+/**
+ * Echoes the full path for an image.
+ */
+
 function seb_img($filename)
 {
     echo IMG.$filename;
 }
 
 
-function seb_js($path_from_theme)
-{
-    echo '<script src="'.get_bloginfo('template_url').'/'.$path_from_theme.'"></script>';
-}
-
-
-function seb_css($path_from_theme)
-{
-    //echo CSS.$filename.css_version(FALSE);
-    echo '<link href="'.get_bloginfo('template_url').'/'.$path_from_theme.css_version(FALSE).'" rel="stylesheet" />';
-}
-
-
 /**
  * Safely returns specified key value from $_GET.
  */
+
 function seb_get( $key )
 {
     return isset($_GET[$key]) ? htmlspecialchars($_GET[$key]) : null;
@@ -354,6 +353,7 @@ function seb_get( $key )
  * @var $id       String Id attribute.
  * @var $class    String Class attribute.
  */
+
 function seb_build_select_tag($options, $default, $selected=null, $name=null, $id=null, $class=null)
 {
     echo '<select'.($id?' id="'.$id.'"':'').($name?' name="'.$name.'"':'').($class?' class="'.$class.'"':'').'>';
@@ -363,6 +363,37 @@ function seb_build_select_tag($options, $default, $selected=null, $name=null, $i
         echo '<option value="'.$option['key'].'"'.($selected==$option['key']?' selected':'').'>'.$option['value'].'</option>';
     }
     echo '</select>';
+}
+
+/**
+ * Display in normal size a x2 image.
+ */
+
+function seb_image_2x($img_array, $class="")
+{
+    seb_image_xx(2, $img_array, $class);
+}
+
+
+/**
+ * Display in normal size a x3 image.
+ */
+
+function seb_image_3x($img_array, $class="")
+{
+    seb_image_xx(3, $img_array, $class);
+}
+
+
+/**
+ * Display in normal size a x$multiplier image.
+ */
+
+function seb_image_xx($multiplier, $img_array, $class="")
+{
+    $ext = strtolower(pathinfo($img_array['url'], PATHINFO_EXTENSION));
+    $style = $ext === "svg" ? '' : 'style="width:'.($img_array['width']/$multiplier).'px;height:'.($img_array['height']/$multiplier).'px"';
+    echo '<img class="'.$class.'" src="'.$img_array['url'].'" '.$style.'>';
 }
 
 

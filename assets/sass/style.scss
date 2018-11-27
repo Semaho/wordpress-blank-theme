@@ -76,22 +76,28 @@ img {
     }
 }
 
+.container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 .pad {padding: 50px;}
 
 .btn {
     display: inline-block;
     padding: 0.8em 2em;
-    min-width: 130px;
+    //min-width: 130px;
     text-align: center;
     font-size: 0.75rem;
     font-family: $font-family;
     font-weight: $regular;
     line-height: 1em;
-    border: 1px solid transparent;
+    border: 1px solid $secondary;
+    border-radius: 1.5em;
     cursor: pointer;
     background-color: $secondary;
     color: #fff;
-    border-radius: 1.5em;
+    -webkit-appearance: none;
     appearance: none;
     
     @extend .tr;
@@ -204,3 +210,10 @@ img {
  **************************************/
 
  @import "u-flexgrid";
+
+
+/**************************************
+ * COMPONENTS
+ **************************************/
+
+ @import "c-form";

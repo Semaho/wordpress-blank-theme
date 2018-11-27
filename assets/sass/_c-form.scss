@@ -1,0 +1,86 @@
+form {
+
+    label {
+        font-size: 0.75rem;
+        letter-spacing: 1.2px;
+        color: #676c77;
+        text-transform: uppercase;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=password],
+    input[type=tel],
+    select,
+    textarea {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        border: 1px solid $primary;
+        border-radius: 0;
+        font-size: 1rem;
+        line-height: 2rem;
+        background: none;
+        display: block;
+
+        &:active,
+        &:focus {
+            border-bottom: 1px solid $primary;
+        }
+    }
+
+    input[type=submit],
+    input[type=reset],
+    button {
+        @extend .btn;
+    }
+
+    .group {
+        margin-top: 2.6rem;
+    }
+
+    /* Typical search box with button at the end. */
+
+    .buttoned {
+        display: flex;
+        max-width: 550px;
+        margin: 0 auto;
+    
+        input:not([type="submit"]) {
+            flex-grow: 1;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            font-size: 24px;
+            padding: 8px 24px;
+        }
+    
+        input[type="submit"] {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            font-size: 24px;
+            padding: 8px 24px;
+            border: none;
+        }
+    }
+
+    .divided {
+        display: flex;
+        flex-wrap: wrap;
+
+        @include phone {
+            display: block;
+        }
+
+        .group {
+            flex-basis: calc(50% - 37px);
+
+            &:nth-child(even) {
+                margin-left: 74px;
+
+                @include phone {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
