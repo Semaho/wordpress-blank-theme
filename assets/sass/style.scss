@@ -66,19 +66,19 @@ img {
 
 .container {
     position: relative;
-    width: 1024px;
+    width: $container;
     margin: 0 auto;
 	
     @media screen and (max-width: #{$container+2*$rem}) {
         width: 100%;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-left: $rem;
+        padding-right: $rem;
     }
 }
 
 .container-fluid {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: $rem;
+    padding-right: $rem;
 }
 
 .pad {padding: 50px;}

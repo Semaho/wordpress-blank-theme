@@ -21,6 +21,7 @@
 
         <header class="site-header">
 
+            <?php // !!!!!!!! TODO : NOT TRUE ANYMORE !!!!!!!!! ?>
             <?php // Chose <table> as flexboxes have retrocompatibilty issues. ?>
             <table>
                 <tbody>
