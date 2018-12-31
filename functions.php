@@ -10,8 +10,8 @@
  **************************************/
 
 // Reminder : when file not found, 'include' throws a warning where 'require' throws a fatal error.
-include get_stylesheet_directory_uri() . '/assets/inc/disable_emoji.php';
-include get_stylesheet_directory_uri() . '/assets/inc/shortcodes.php';
+include get_stylesheet_directory() . '/assets/inc/disable_emoji.php';
+include get_stylesheet_directory() . '/assets/inc/shortcodes.php';
 
 
 
