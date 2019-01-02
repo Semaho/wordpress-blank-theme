@@ -1,11 +1,16 @@
-.flexgrid-4 {
+[class*="flexgrid-"] {
     display: flex;
     flex-wrap: wrap;
-    
+
+    > * {
+        margin-left: $grid-gap;
+    }
+}
+
+.flexgrid-4 {
     > * {
         flex-basis: calc(25% - #{$grid-gap/4*3});
         max-width: calc(25% - #{$grid-gap/4*3});
-        margin-left: $grid-gap;
         
         &:nth-child(n+5) {
             margin-top: $grid-gap;
@@ -18,19 +23,34 @@
 }
 
 .flexgrid-3 {
-    display: flex;
-    flex-wrap: wrap;
-    
     > * {
         flex-basis: calc(33% - #{$grid-gap/3*2});
         max-width: calc(33% - #{$grid-gap/3*2});
-        margin-left: $grid-gap;
         
         &:nth-child(n+4) {
             margin-top: $grid-gap;
         }
         
         &:nth-child(3n+1) {
+            margin-left: 0;
+        }
+    }
+}
+
+.flexgrid-2 {
+    > * {
+        flex-basis: calc(50% - #{$grid-gap/2});
+        max-width: calc(50% - #{$grid-gap/2});
+
+        &:nth-child(n+3) {
+            margin-top: $grid-gap;
+        }
+    
+        &:nth-child(3n+1) {
+            margin-left: auto;
+        }
+    
+        &:nth-child(2n+1) {
             margin-left: 0;
         }
     }
