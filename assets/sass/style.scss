@@ -118,51 +118,6 @@ img {
 
 
 /**************************************
- * ENTRY CONTENT FORMATTING
- **************************************/
-
-.richtext {
-    
-    p {
-        margin-bottom: 1em;
-        font-size: 1rem;
-        line-height: 1.5em;
-        
-        &:last-child {margin-bottom: 0;}
-    }
-    
-    pre, blockquote {
-        background: #eee;
-        padding: 10px;
-        overflow-x: scroll;
-        margin-bottom: 20px;
-    }
-    
-    ol, ul {
-        padding-left: 30px;
-        margin-bottom: 20px;
-        
-        li {
-            font-size: 0.875rem;
-        }
-    }
-    
-    hr {
-        border: none;
-        border-bottom: 1px solid #6EC9F1;
-        margin: 10px 0;
-    }
-    
-    h1 {font-size: 3rem;   margin-bottom: 1.000rem;}
-    h2 {font-size: 2.4rem; margin-bottom: 0.625rem;}
-    h3 {font-size: 1.4rem; margin-bottom: 0.375rem;}
-    h4 {font-size: 1.2rem; margin-bottom: 0rem;}
-    h5 {font-size: 1rem;   margin-bottom: 0rem;}
-    h6 {font-size: 1rem;   margin-bottom: 0rem;}
-}
-
-
-/**************************************
  * THEME
  **************************************/
 
@@ -209,11 +164,12 @@ img {
  * UTILITIES
  **************************************/
 
- @import "u-flexgrid";
+ @import "flexgrid";
 
 
 /**************************************
  * COMPONENTS
  **************************************/
 
- @import "c-form";
+ @import "form";
+ @import "richtext";
