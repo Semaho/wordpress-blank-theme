@@ -1,8 +1,13 @@
-<?php get_header(); ?>
+<?php
+get_header();
 
-<?php the_content(); ?>
+if ( have_posts() )
+{
+    the_post();
+    the_content(); 
+}
 
-<?php // If using ACF Layout Engine. ?>
-<?php // get_template_part( 'layout-engine/layout', 'engine' ); ?>
+// If using ACF Layout Engine.
+// get_template_part( 'layout-engine/layout', 'engine' );
 
-<?php get_footer(); ?>
+get_footer();

@@ -1,0 +1,95 @@
+// Small
+.u-margin-sm {
+    margin: $spacing-small;
+}
+.u-margin-sm-top {
+    margin-top: $spacing-small;
+}
+.u-margin-sm-right {
+    margin-right: $spacing-small;
+}
+.u-margin-sm-bottom {
+    margin-bottom: $spacing-small;
+}
+.u-margin-sm-left {
+    margin-left: $spacing-small;
+}
+
+// Medium
+.u-margin-md {
+    margin: $spacing-medium;
+}
+.u-margin-md-top {
+    margin-top: $spacing-medium;
+}
+.u-margin-md-right {
+    margin-right: $spacing-medium;
+}
+.u-margin-md-bottom {
+    margin-bottom: $spacing-medium;
+}
+.u-margin-md-left {
+    margin-left: $spacing-medium;
+}
+
+// Large
+.u-margin-lg {
+    margin: $spacing-large;
+}
+.u-margin-lg-top {
+    margin-top: $spacing-large;
+}
+.u-margin-lg-right {
+    margin-right: $spacing-large;
+}
+.u-margin-lg-bottom {
+    margin-bottom: $spacing-large;
+}
+.u-margin-lg-left {
+    margin-left: $spacing-large;
+}
+.u-margin-lg-h {
+    margin-top: $spacing-large;
+    margin-bottom: $spacing-large;
+}
+
+// PADDING
+.u-padding-sm-h {
+    padding-top: $spacing-small;
+    padding-bottom: $spacing-small;
+}
+.u-padding-md-h {
+    padding-top: $spacing-medium;
+    padding-bottom: $spacing-medium;
+}
+.u-padding-lg-h {
+    padding-top: $spacing-large;
+    padding-bottom: $spacing-large;
+    
+    @include phone {
+        padding-top: $spacing-medium;
+        padding-bottom: $spacing-medium;
+    }
+}
+
+.u-padding-sm-top {
+    padding-top: $spacing-small;
+}
+.u-padding-md-top {
+    padding-top: $spacing-medium;
+}
+.u-padding-lg-top {
+    padding-top: $spacing-large;
+    
+    @include phone {
+        padding-top: $spacing-medium;
+    }
+}
+
+.u-padding-lg-bottom {
+    padding-bottom: $spacing-large;
+    
+    @include phone {
+        padding-bottom: $spacing-medium;
+    }
+}
