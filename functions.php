@@ -95,6 +95,18 @@ function seb_javascript_detection() {
 //add_action( 'wp_head', 'seb_javascript_detection', 0 );
 
 
+/**
+ * ACF Option page.
+ * 
+ * Use : the_field('field_name', 'option');
+ */
+
+// if( function_exists('acf_add_options_page') )
+// {	
+// 	acf_add_options_page();	
+// }
+
+
 
 /**************************************
  * POST TYPE
@@ -335,16 +347,6 @@ function seb_img($filename)
 
 
 /**
- * Safely returns specified key value from $_GET.
- */
-
-function seb_get( $key )
-{
-    return isset($_GET[$key]) ? htmlspecialchars($_GET[$key]) : null;
-}
-
-
-/**
  * Echoes a <select> tag with options.
  * @var $options  Array  of arrays with 'key' and 'value' keys.
  * @var $default  Array  Default key and value.
@@ -394,6 +396,30 @@ function seb_image_xx($multiplier, $img_array, $class="")
     $ext = strtolower(pathinfo($img_array['url'], PATHINFO_EXTENSION));
     $style = $ext === "svg" ? '' : 'style="width:'.($img_array['width']/$multiplier).'px;height:'.($img_array['height']/$multiplier).'px"';
     echo '<img class="'.$class.'" src="'.$img_array['url'].'" '.$style.'>';
+}
+
+
+/**
+ * Return a sanitized value from $_GET, if any.
+ */
+
+function seb_GET($index)
+{
+    return (isset($_GET) && isset($_GET[$index])) ? 
+        sanitize_text_field($_GET[$index]) : 
+        null;
+}
+
+
+/**
+ * Return a sanitized value from $_POST, if any.
+ */
+
+function seb_POST($index)
+{
+    return (isset($_POST) && isset($_POST[$index])) ? 
+        sanitize_text_field($_POST[$index]) : 
+        null;
 }
 
 
