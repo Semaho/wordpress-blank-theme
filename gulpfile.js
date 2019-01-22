@@ -18,10 +18,13 @@ gulp.task('styles', function() {
         .pipe(sourcemaps.init())
             .pipe(sass().on('error', sass.logError))
             .pipe(postcss([ autoprefixer({ browsers: ['> 1%'] }) ]))
-            .pipe(cssnano())
             .pipe(concat('style.min.css'))
+            .pipe(cssnano())
             //.pipe(flatten()) // Ignore directory hierarchy.
-        .pipe(sourcemaps.write('./maps'))
+        .pipe(sourcemaps.mapSources(function(sourcePath, file) {
+            return '../../sass/' + sourcePath;
+        }))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./assets/dist/css'))
 });
 
@@ -35,9 +38,12 @@ gulp.task('scripts', function() {
             './assets/js/seb.js'
         ])
         .pipe(sourcemaps.init())
-        .pipe(uglify())
         .pipe(concat('scripts.min.js'))
-        .pipe(sourcemaps.write('./maps'))
+        .pipe(uglify())
+        .pipe(sourcemaps.mapSources(function(sourcePath, file) {
+            return '../../js/' + sourcePath;
+        }))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./assets/dist/js'))
 });
 
