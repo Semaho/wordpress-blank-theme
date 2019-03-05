@@ -424,6 +424,42 @@ function seb_POST($index)
 
 
 /**
+ * Get current URL.
+ * Note: don't use this where security is a concern, $_SERVER can be modified by client.
+ */
+
+function seb_get_current_url()
+{
+    return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http' ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+}
+
+
+/**
+ * Add or replace query string parameters while preserving the others.
+ */
+
+function seb_add_query_string_param($url, $key, $value)
+{
+    $url = preg_replace('/\?.*/', '', $url);
+    $query = $_GET;
+    $query[$key] = $value;
+
+    return $url.'?'.http_build_query($query);
+}
+
+
+/**
+ * Check email validity.
+ * @return   bool   Whether email is valid or not.
+ */
+
+function seb_is_email($maybemail)
+{
+    return filter_var($maybemail, FILTER_VALIDATE_EMAIL);
+}
+
+
+/**
  * Help me mofocker.
  */
 function vd($var, $label='')
