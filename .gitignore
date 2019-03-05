@@ -1,8 +1,15 @@
-node_modules
+# Dependencies
+node_modules/
+bower_components/
+
+# Optional npm cache directory
+.npm
+
+# MacOS files
+.DS_Store
+
+# Misc.
 *.log
 
-/.htaccess
-/license.txt
-/readme.html
-/sitemap.xml
-/sitemap.xml.gz
+# Theme exclusions
+assets/dist/
