@@ -20,7 +20,6 @@ include get_stylesheet_directory() . '/assets/inc/shortcodes.php';
  **************************************/
 
 define('CSS_VERSION', wp_get_theme()->get('Version'));
-define('CFS_REVISIONS', true);                              // Revisions for CFS.
 define('IMG', get_stylesheet_directory_uri().'/assets/img/'); // Template image folder.
 define('JS' , get_stylesheet_directory_uri().'/assets/js/');  // Template js folder.
 define('CSS', get_stylesheet_directory_uri().'/assets/css/'); // Template css folder.
