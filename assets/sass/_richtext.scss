@@ -10,6 +10,17 @@
         line-height: 1.5em;
         
         &:last-child {margin-bottom: 0;}
+
+        a {
+            text-decoration: underline;
+
+            &:hover, &:focus {
+                color: $primary;
+            }
+            &:active {
+                color: darken($primary, 10%);
+            }
+        }
     }
     
     pre, blockquote {

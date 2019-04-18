@@ -308,30 +308,52 @@ function seb_sharing()
 
 
 /**
- * Uses the post category to get related posts.
+ * Get related posts, based on post taxonomies.
+ * Set `$args['return']` to `array` to return the query args array,
+ * so you can further manipulate it and make the WP_Query yourself.
  */
 
-function seb_related_posts($nb=4)
+function seb_get_related_posts( $post_id, $posts_per_page, $args = array() )
 {
-    global $post;
-    
-    $cats = array();
-    $categories = get_the_category(); // Get all categories for this post.
+    $args = wp_parse_args( (array) $args, array(
+        'orderby' => 'rand',
+        'return'  => 'query', // Valid values are: 'query' (WP_Query object), 'array' (the arguments array)
+    ) );
 
-    foreach($categories as $category) {
-        array_push($cats, $category->cat_ID);
-    }
-    
-    $args = array(
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'post_type' => 'post',
-        'numberposts' => $nb,
-        'post__not_in' => array($post->ID),
-        'category__in' => $cats
+    $related_args = array(
+        'post_type'      => get_post_type( $post_id ),
+        'posts_per_page' => $posts_per_page,
+        'post_status'    => 'publish',
+        'post__not_in'   => array( $post_id ),
+        'orderby'        => $args['orderby'],
+        'tax_query'      => array()
     );
 
-    return get_posts($args);
+    $post       = get_post( $post_id );
+    $taxonomies = get_object_taxonomies( $post, 'names' );
+
+    foreach ( $taxonomies as $taxonomy ) {
+        $terms = get_the_terms( $post_id, $taxonomy );
+        if ( empty( $terms ) ) {
+            continue;
+        }
+        $term_list                   = wp_list_pluck( $terms, 'slug' );
+        $related_args['tax_query'][] = array(
+            'taxonomy' => $taxonomy,
+            'field'    => 'slug',
+            'terms'    => $term_list
+        );
+    }
+
+    if ( count( $related_args['tax_query'] ) > 1 ) {
+        $related_args['tax_query']['relation'] = 'OR';
+    }
+
+    if ( $args['return'] == 'query' ) {
+        return new WP_Query( $related_args );
+    } else {
+        return $related_args;
+    }
 }
 
 
