@@ -214,23 +214,23 @@ function seb_the_dyn_cov($url='')
 
 
 /**
- * Custom languages list.
+ * Echoes a custom WPML languages list, if any.
+ * @param   String   $separator   A string that will be used to separated each language. It'll be automatically wrapped in a `<span>`.
  */
 
-function seb_the_languages()
+function seb_the_languages($separator = null)
 {
-    if ( function_exists('icl_get_languages') )
+    if (function_exists('icl_get_languages'))
     {
         $languages = icl_get_languages('skip_missing=1');
-        if(!empty($languages))
+        if (!empty($languages))
         {
             echo '<div class="lang-switch">';
-            foreach($languages as $l)
+            foreach ($languages as $l)
             {
-                echo '<a href="'.$l['url'].'"'.(!$l['active'] ? '' : ' class="active"').'>';
-                echo icl_disp_language($l['language_code']);
-                echo '</a>';
+                $items_html[] = '<a href="'.$l['url'].'"'.(!$l['active'] ? '' : ' class="active"').'>'.icl_disp_language($l['language_code']).'</a>';
             }
+            echo implode(($separator ? "<span>$separator</span>" : ''), $items_html); 
             echo '</div>';
         }
     }
