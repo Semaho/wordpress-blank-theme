@@ -228,7 +228,7 @@ function seb_the_languages($separator = null)
             echo '<div class="lang-switch">';
             foreach ($languages as $l)
             {
-                $items_html[] = '<a href="'.$l['url'].'"'.(!$l['active'] ? '' : ' class="active"').'>'.icl_disp_language($l['language_code']).'</a>';
+                $items_html[] = '<a href="'.$l['url'].'" title="'.$l['native_name'].'"'.(!$l['active'] ? '' : ' class="active"').'>'.icl_disp_language($l['language_code']).'</a>';
             }
             echo implode(($separator ? "<span>$separator</span>" : ''), $items_html); 
             echo '</div>';
