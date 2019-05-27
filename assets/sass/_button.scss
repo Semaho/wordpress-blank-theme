@@ -1,0 +1,32 @@
+.btn {
+    display: inline-block;
+    padding: 0.8em 2em;
+    //min-width: 130px;
+    text-align: center;
+    //font-size: 1rem;
+    font-family: $font-family;
+    font-weight: $regular;
+    line-height: 1em;
+    border: 1px solid $secondary;
+    border-radius: $input-radius;
+    cursor: pointer;
+    background-color: $secondary;
+    color: #fff;
+    -webkit-appearance: none;
+    appearance: none;
+    
+    @extend .tr;
+
+    &:hover, &:focus {
+        background-color: darken($secondary, 10%);
+    }
+
+    &.btn--o {
+        border-color: $light;
+        background-color: transparent;
+
+        &:hover, &:focus {
+            background-color: transparentize($light, 0.9);
+        }
+    }
+}
