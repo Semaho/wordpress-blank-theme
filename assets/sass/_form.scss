@@ -17,10 +17,10 @@ form {
         appearance: none;
         width: 100%;
         border: 1px solid $primary;
-        border-radius: 0;
+        border-radius: $input-radius;
         font-size: 1rem;
         line-height: 2rem;
-        background: none;
+        background: $light;
         display: block;
 
         &:active,
@@ -74,17 +74,17 @@ form {
     
         input:not([type="submit"]) {
             flex-grow: 1;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            font-size: 24px;
-            padding: 8px 24px;
+            border-top-left-radius: $input-radius;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: $input-radius;
+            border-bottom-right-radius: 0;
         }
     
         input[type="submit"] {
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            font-size: 24px;
-            padding: 8px 24px;
+            border-top-left-radius: 0;
+            border-top-right-radius: $input-radius;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: $input-radius;
             border: none;
         }
     }
