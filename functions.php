@@ -308,6 +308,28 @@ function seb_sharing()
 
 
 /**
+ * Socials Sharers URLs.
+ */
+
+function seb_the_facebook_sharer_url()
+{
+    echo "https://www.facebook.com/sharer/sharer.php?u=".urlencode(get_the_permalink());
+}
+
+
+function seb_the_twitter_sharer_url()
+{
+    echo "https://twitter.com/share?url=".urlencode(get_the_permalink())."&text=".urlencode(get_the_title());
+}
+
+
+function seb_the_linkedin_sharer_url()
+{
+    echo "https://www.linkedin.com/sharing/share-offsite/?url=".urlencode(get_the_permalink());
+}
+
+
+/**
  * Get related posts, based on post taxonomies.
  * Set `$args['return']` to `array` to return the query args array,
  * so you can further manipulate it and make the WP_Query yourself.
