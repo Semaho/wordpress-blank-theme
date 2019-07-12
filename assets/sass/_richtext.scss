@@ -25,6 +25,16 @@
         overflow-x: scroll;
         margin-bottom: 20px;
     }
+
+    code {
+        font-family: monospace;
+        display: inline-block;
+        font-size: 0.9em;
+        background: #efefef;
+        padding: 0px 8px;
+        border-radius: 4px;
+        line-height: 1.6em;
+    }
     
     ol, ul {
         padding-left: 30px;
