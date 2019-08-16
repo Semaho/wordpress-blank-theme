@@ -119,21 +119,6 @@ img {
     }
 }
 
-.navigation {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    
-    .menu-item {
-        a {
-            display: inline-block;
-            line-height: 3em;
-            padding: 0 1.5em;
-        }
-    }
-}
-
 
 /**************************************
  * VENDORS
@@ -149,4 +134,5 @@ img {
 
 @import "button";
 @import "form";
+@import "header";
 @import "richtext";
