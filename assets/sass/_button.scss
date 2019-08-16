@@ -30,3 +30,27 @@
         }
     }
 }
+
+.btngroup {
+    display: inline-flex;
+
+    .btn {
+        border-radius: 0;
+
+        &:focus {
+            z-index: 1;
+        }
+
+        & + .btn {
+            margin-left: -1px;
+        }
+    }
+
+    .btn:first-child {
+        border-radius: $input-radius 0 0 $input-radius;
+    }
+
+    .btn:last-child {
+        border-radius:0 $input-radius $input-radius 0;
+    }
+}
