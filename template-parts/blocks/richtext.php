@@ -1,0 +1,1 @@
+<section class="richtext"><?php the_field('richtext') ?></section>
