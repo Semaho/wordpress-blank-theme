@@ -19,37 +19,25 @@
 
     <body>
 
-        <header class="site-header">
-
-            <?php // !!!!!!!! TODO : NOT TRUE ANYMORE !!!!!!!!! ?>
-            <?php // Chose <table> as flexboxes have retrocompatibilty issues. ?>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <a class="homelink" href="<?php echo site_url() ?>">
-                                <img class="logo" alt="Logo" src="<?php seb_img('logo.png'); ?>" />
-                            </a>
-                        </td>
-                        <td>
-                            <?php
-                            /*
-                            $defaults = array(
-                                'theme_location'  => 'pages-menu',
-                                'container'       => 'nav',
-                                'menu_class'      => 'navigation',
-                                'fallback_cb'     => false
-                            );
-                            wp_nav_menu( $defaults );
-                            */
-                            ?>
-                        </td>
-                        <td>
-                            <?php /* ?>
-                           <div class="langbar"><?php seb_the_languages(); ?></div>
-                           <?php */ ?>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </header>
+    <header class="header">
+        <div class="container">
+            <a class="header__home" href="<?php echo site_url() ?>">
+                <img class="header__logo" alt="<?php bloginfo('name') ?> logo" src="<?php seb_img('logo.svg'); ?>" />
+            </a>
+            <div class="header__spacer"></div>
+            <?php
+            /*
+            $defaults = array(
+                'theme_location' => 'pages-menu',
+                'container'      => 'nav',
+                'menu_class'     => 'header__nav',
+                'fallback_cb'    => false
+            );
+            wp_nav_menu( $defaults );
+            */
+            ?>
+            <?php /* ?>
+            <div class="langbar"><?php seb_the_languages(); ?></div>
+            <?php */ ?>
+        </div>
+    </header>
