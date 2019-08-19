@@ -7,10 +7,6 @@
 		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 	</header>
 
-	<?php //paf_excerpt(); ?>
-
-	<?php //paf_post_thumbnail(); ?>
-
 	<div class="entry-content">
 		<?php
 			/* translators: %s: Name of current post */

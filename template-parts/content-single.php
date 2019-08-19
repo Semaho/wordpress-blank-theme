@@ -3,8 +3,6 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header>
 
-	<?php //paf_excerpt(); ?>
-
 	<div class="entry-content">
 		<?php
 			the_content();
@@ -25,7 +23,6 @@
 	</div>
 
 	<footer class="entry-footer">
-		<?php paf_entry_meta(); ?>
 		<?php
 			edit_post_link(
 				sprintf(
