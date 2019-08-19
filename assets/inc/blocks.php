@@ -14,7 +14,7 @@ function seb_block_categories( $categories, $post )
         array(
             array(
                 'slug' => 'custom-blocks',
-                'title' => bloginfo('name'),
+                'title' => get_bloginfo('name'),
                 'icon'  => 'wordpress'
             ),
         )
@@ -32,7 +32,7 @@ function register_acf_block_types()
     // Richtext.
     acf_register_block_type(array(
         'name'              => 'richtext',
-        'title'             => __('FBB - Richtext', 'seb'),
+        'title'             => __('Richtext', 'seb'),
         'description'       => __('Richtext', 'seb'),
         'render_template'   => 'template-parts/blocks/richtext.php',
         'category'          => 'custom-blocks',
