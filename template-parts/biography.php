@@ -1,10 +1,7 @@
 <div class="author-info">
 	<div class="author-avatar">
 		<?php
-		// Filter the Twenty Sixteen author bio avatar size.
-		$author_bio_avatar_size = apply_filters( 'paf_author_bio_avatar_size', 42 );
-
-		echo get_avatar( get_the_author_meta( 'user_email' ), $author_bio_avatar_size );
+		echo get_avatar( get_the_author_meta( 'user_email' ) );
 		?>
 	</div>
 

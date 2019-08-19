@@ -34,20 +34,8 @@ get_header(); ?>
 
 						<div class="entry-attachment">
 							<?php
-								/**
-								 * Filter the default paf image attachment size.
-								 *
-								 * @since Twenty Sixteen 1.0
-								 *
-								 * @param string $image_size Image size. Default 'large'.
-								 */
-								$image_size = apply_filters( 'paf_attachment_size', 'large' );
-
-								echo wp_get_attachment_image( get_the_ID(), $image_size );
+								echo wp_get_attachment_image( get_the_ID() );
 							?>
-
-							<?php paf_excerpt( 'entry-caption' ); ?>
-
 						</div><!-- .entry-attachment -->
 
 						<?php
@@ -64,7 +52,6 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 
 					<footer class="entry-footer">
-						<?php paf_entry_meta(); ?>
 						<?php
 							// Retrieve attachment metadata.
 							$metadata = wp_get_attachment_metadata();
