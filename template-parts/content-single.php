@@ -3,7 +3,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header>
 
-	<div class="entry-content">
+	<div class="entry-content reading richtext">
 		<?php
 			the_content();
 

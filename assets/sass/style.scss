@@ -89,6 +89,18 @@ img {
     padding-right: $rem;
 }
 
+.reading {
+    position: relative;
+    width: $reading;
+    margin: 0 auto;
+	
+    @media screen and (max-width: #{$reading+2*$rem}) {
+        width: 100%;
+        padding-left: $rem;
+        padding-right: $rem;
+    }
+}
+
 .pad {padding: 50px;}
 
 
