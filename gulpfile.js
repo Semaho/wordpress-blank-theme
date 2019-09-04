@@ -24,8 +24,8 @@ gulp.task('styles', function() {
         .pipe(sourcemaps.mapSources(function(sourcePath, file) {
             return '../../sass/' + sourcePath;
         }))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./assets/dist/css'))
+        .pipe(sourcemaps.write('../../sass/maps'))
+        .pipe(gulp.dest('./assets/dist/css'));
 });
 
 
@@ -44,8 +44,8 @@ gulp.task('scripts', function() {
         .pipe(sourcemaps.mapSources(function(sourcePath, file) {
             return '../../js/' + sourcePath;
         }))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./assets/dist/js'))
+        .pipe(sourcemaps.write('../../js/maps'))
+        .pipe(gulp.dest('./assets/dist/js'));
 });
 
 
