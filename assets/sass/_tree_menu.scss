@@ -1,0 +1,28 @@
+.tree-menu {
+    list-style: none;
+    
+    ul {
+        list-style: none;
+    }
+
+    .menu-item {
+        color: $primary;
+
+        a {
+            display: inline-block;
+            padding: 0.3em 0;
+
+            &:hover, &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        &.current-menu-item > a {
+            font-weight: $semibold;
+        }
+    }
+
+    ul.sub-menu {
+        padding-left: 1.5em;
+    }
+}

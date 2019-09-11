@@ -1,9 +1,6 @@
 <?php
 /**
  * Template Name: &lt;name&gt;
- *
- * @package Paf!
- * @subpackage Paf!_2015
  */
 
 get_header(); ?>

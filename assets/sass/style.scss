@@ -75,7 +75,8 @@ img {
 .container {
     position: relative;
     width: $container;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 	
     @media screen and (max-width: #{$container+2*$rem}) {
         width: 100%;
@@ -92,7 +93,8 @@ img {
 .reading {
     position: relative;
     width: $reading;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 	
     @media screen and (max-width: #{$reading+2*$rem}) {
         width: 100%;
@@ -136,8 +138,8 @@ img {
  * VENDORS
  **************************************/
 
-//@import "../../node_modules/...";
-//@import "node_modules/slick-carousel/slick/slick.scss";
+// @import "../../node_modules/...";
+// @import "node_modules/slick-carousel/slick/slick.scss";
 
 
 /**************************************
@@ -148,3 +150,4 @@ img {
 @import "form";
 @import "header";
 @import "richtext";
+// @import "tree_menu";

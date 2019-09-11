@@ -1,1 +1,5 @@
-<section class="richtext"><?php the_field('richtext') ?></section>
+<section class="richtext">
+    <div class="reading">
+        <?php the_field('richtext') ?>
+    </div>
+</section>
