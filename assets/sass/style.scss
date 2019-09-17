@@ -5,6 +5,14 @@
 
 
 /**************************************
+ * VENDORS
+ **************************************/
+
+// @import "../../node_modules/...";
+// @import "../../node_modules/slick-carousel/slick/slick.scss";
+
+
+/**************************************
  * UTILITIES / LIBS
  **************************************/
 
@@ -135,17 +143,10 @@ img {
 
 
 /**************************************
- * VENDORS
- **************************************/
-
-// @import "../../node_modules/...";
-// @import "node_modules/slick-carousel/slick/slick.scss";
-
-
-/**************************************
  * COMPONENTS
  **************************************/
 
+// @import "burger";
 @import "button";
 @import "form";
 @import "header";
