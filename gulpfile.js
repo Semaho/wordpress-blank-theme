@@ -56,6 +56,6 @@ gulp.task('scripts', function() {
 
 gulp.task('default', function()
 {
-    gulp.watch("assets/sass/*.scss", gulp.series('styles'));
-    gulp.watch("assets/js/*.js", gulp.series('scripts'));
+    gulp.watch("assets/sass/*", gulp.series('styles'));
+    gulp.watch("assets/js/*", gulp.series('scripts'));
 });
