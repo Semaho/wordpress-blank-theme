@@ -1,0 +1,86 @@
+/* Settings */
+
+$button-size: 40px
+$bar-width  : 0.8
+$bar-height : 2px
+$bar-spacing: 10px
+$animate-timeout: 0s
+
+.burger
+    background: 0 0
+    border: none
+    border-radius: 0
+    color: inherit
+    display: inline-block
+    position: relative
+    box-sizing: border-box
+    height: $button-size
+    padding: 0 0 0 $button-size
+    margin: 0
+    line-height: $button-size
+    vertical-align: middle
+    appearance: none
+    outline: 0
+    cursor: pointer
+
+    b 
+        display: block
+        position: absolute
+        left: calc(#{$button-size} * ((1 - #{$bar-width}) / 2))
+        width: calc(#{$button-size} * #{$bar-width})
+        height: $bar-height
+        border-radius: calc(#{$bar-height} / 2)
+        background: currentColor
+        color: inherit
+        opacity: 1
+
+        &:nth-of-type(1) 
+            bottom: calc(50% + #{$bar-spacing})
+            transition: bottom 0.2s ease, transform 0.2s ease, width 0.2s ease
+        
+        &:nth-of-type(2) 
+            top: calc(50% - (#{$bar-height} / 2))
+            transition: opacity 0.2s ease
+        
+        &:nth-of-type(3) 
+            top: calc(50% + #{$bar-spacing})
+            transition: top 0.2s ease, transform 0.2s ease, width 0.2s ease
+
+    /* Squeeze animation */
+
+    &.burger--squeeze 
+        b 
+            &:nth-of-type(1) 
+                transition-delay: 0.1s, 0s
+            
+            &:nth-of-type(2) 
+                transition-delay: 0.1s
+            
+            &:nth-of-type(3) 
+                transition-delay: 0.1s, 0s
+
+    /* Opened state */
+
+    &.burger--opened 
+        b 
+            &:nth-of-type(1) 
+                bottom: calc(50% - (#{$bar-height} / 2))
+                transform: rotate(45deg)
+            
+            &:nth-of-type(2) 
+                opacity: 0
+            
+            &:nth-of-type(3) 
+                top: calc(50% - (#{$bar-height} / 2))
+                transform: rotate(-45deg)
+            
+        &.burger--squeeze 
+            b 
+                &:nth-of-type(1) 
+                    transition-delay: calc(#{$animate-timeout} + 0s), calc(#{$animate-timeout} + 0.1s)
+                
+                &:nth-of-type(2) 
+                    transition-delay: calc(#{$animate-timeout} + 0s)
+                
+                &:nth-of-type(3) 
+                    transition-delay: calc(#{$animate-timeout} + 0s), calc(#{$animate-timeout} + 0.1s)

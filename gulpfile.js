@@ -14,7 +14,7 @@ var gulp         = require('gulp'),
  */
 
 gulp.task('styles', function() {
-    return gulp.src('./assets/sass/*.scss')
+    return gulp.src('./assets/sass/*')
         .pipe(sourcemaps.init())
             .pipe(sass().on('error', sass.logError))
             .pipe(postcss([ autoprefixer() ]))
