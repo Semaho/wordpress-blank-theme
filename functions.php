@@ -82,7 +82,20 @@ function seb_theme_setup()
     
     //load_theme_textdomain('seb');   // 1st arg = used domain name in gettext functions. Put fr_FR.po/fr_FR.mo in theme directory.
 }
-add_action( 'after_setup_theme', 'seb_theme_setup' );
+
+
+/**
+ * Remove admin bar for non admins.
+ */
+
+function seb_remove_admin_bar_for_non_admins()
+{
+    if (!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+    }
+}
+add_action('after_setup_theme', 'seb_theme_setup' );
+add_action('after_setup_theme', 'seb_remove_admin_bar_for_non_admins');
 
 
 /**
