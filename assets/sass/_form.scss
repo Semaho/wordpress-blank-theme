@@ -1,4 +1,24 @@
-form {
+.form {
+
+    &__set {
+        border: none;
+
+        & + & {
+            margin-top: 2rem;
+        }
+
+        &__legend {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1em;
+        }
+    }
+
+    &__group {
+        & + & {
+            margin-top: 2rem;
+        }
+    }
 
     &__set {
         border: none;
@@ -24,6 +44,12 @@ form {
         font-size: 0.9rem;
     }
 
+    &__label {
+        font-weight: $semibold;
+        margin-bottom: 0.5em;
+        display: block;
+    }
+
     input[type=text],
     input[type=email],
     input[type=password],
@@ -35,7 +61,7 @@ form {
         -webkit-appearance: none;
         appearance: none;
         width: 100%;
-        border: 1px solid $dark;
+        border: 1px solid $gray;
         border-radius: $input-radius;
         font-size: 1rem;
         line-height: 2rem;
@@ -53,6 +79,12 @@ form {
     input[type=reset],
     button {
         @extend .btn;
+    }
+
+    &__radio {
+        & + & {
+            margin-top: 0.8em;
+        }
     }
 
     // <input> + <label>
@@ -77,10 +109,10 @@ form {
     //         }
     //     }
         
-    //     &:checked + label::before {
-    //         content: $icon-checkedbox;
-    //     }
-    // }
+        &:checked + label::before {
+            content: $icon-checkedbox;
+        }
+    }
 
     .group {
         margin-top: 2.6rem;

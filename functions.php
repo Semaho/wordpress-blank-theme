@@ -114,10 +114,25 @@ function seb_javascript_detection() {
  * Use : the_field('field_name', 'option');
  */
 
-// if( function_exists('acf_add_options_page') )
-// {	
-// 	acf_add_options_page();	
-// }
+if( function_exists('acf_add_options_page') )
+{	
+	acf_add_options_page();	
+}
+
+
+function remove_menus() {
+	// remove_menu_page( 'index.php' );                  //Dashboard
+	remove_menu_page( 'edit.php' );                   //Posts
+	// remove_menu_page( 'upload.php' );                 //Media
+	// remove_menu_page( 'edit.php?post_type=page' );    //Pages
+	remove_menu_page( 'edit-comments.php' );          //Comments
+	// remove_menu_page( 'themes.php' );                 //Appearance
+	// remove_menu_page( 'plugins.php' );                //Plugins
+	// remove_menu_page( 'users.php' );                  //Users
+	// remove_menu_page( 'tools.php' );                  //Tools
+	// remove_menu_page( 'options-general.php' );        //Settings
+}
+add_action( 'admin_menu', 'remove_menus' );
 
 
 
@@ -125,24 +140,54 @@ function seb_javascript_detection() {
  * POST TYPE
  **************************************/
 
-/*
 function seb_posttypes()
 {
-	register_post_type( 'post_type',
+	register_post_type( 'mc_product',
 		array(
 			'labels' => array(
-				'name' => __( '', 'seb' ),
-				'singular_name' => __( '', 'seb' )
+				'name' => __( 'Products', 'seb' ),
+				'singular_name' => __( 'Product', 'seb' )
 			),
-			'public' => true,
+			'public'      => true,
 			'has_archive' => true,
-            'menu_icon' => '',
-            'supports' => array('title', 'editor', 'thumbnail', 'revisions')
+            'menu_icon'   => 'dashicons-tag',
+            'supports'    => array('title', 'editor', 'revisions'),
+            'taxonomies'  => array('category'),
 		)
-	);
+    );
+    
+	register_post_type( 'mc_request',
+		array(
+			'labels' => array(
+				'name' => __( 'Requests', 'seb' ),
+				'singular_name' => __( 'Request', 'seb' )
+			),
+            'public'    => false,
+            'show_ui'   => true,
+            'menu_icon' => 'dashicons-format-chat',
+            'supports'  => array('title', 'revisions')
+		)
+    );
+    
+	register_post_type( 'mc_brand',
+		array(
+			'labels' => array(
+				'name' => __( 'Brands', 'seb' ),
+				'singular_name' => __( 'Brand', 'seb' )
+			),
+            'public'    => false,
+            'show_ui'   => true,
+            'menu_icon' => 'dashicons-admin-site',
+            'supports'  => array('title', 'revisions')
+		)
+    );
+    
+    register_taxonomy('mc_season', 'mc_product', [
+        'label' => __('Seasons', 'seb'),
+        'hierarchical' => true
+    ]);
 }
 add_action( 'init', 'seb_posttypes' );
-*/
 
 
 
@@ -278,6 +323,32 @@ function seb_the_excerpt($size = 150, $end = '...')
     if( strlen($ex) >= $size )
         $ex = $ex . $end;
     echo $ex;
+}
+
+
+function seb_get_the_firstname()
+{
+    $user = wp_get_current_user();
+
+    return is_a($user, 'WP_User') ? get_user_meta($user->ID, 'first_name', true) : '';
+}
+
+function seb_the_firstname()
+{
+    echo seb_get_the_firstname();
+}
+
+
+function seb_get_the_lastname()
+{
+    $user = wp_get_current_user();
+
+    return is_a($user, 'WP_User') ? get_user_meta($user->ID, 'last_name', true) : '';
+}
+
+function seb_the_lastname()
+{
+    echo seb_get_the_firstname();
 }
 
 
@@ -424,6 +495,34 @@ function seb_build_select_tag($options, $default, $selected=null, $name=null, $i
     echo '</select>';
 }
 
+function seb_build_input_tag($type, $options, $default, $selected=null, $name, $id=null, $class=null)
+{
+    if ($default)
+    {
+        echo '<div class="form__radio">';
+        echo '<input type="'.$type.'" name="'.$name.'" id="'.$name.'_'.$default['key'].'" value="'.$default['key'].'"'.(empty($selected)?' selected':'').'>';
+        echo '<label for="'.$name.'_'.$default['key'].'">'.$default['value'].'</label>';
+        echo '</div>';
+    }
+    foreach ( $options as $option )
+    {
+        echo '<div class="form__radio">';
+        echo '<input type="'.$type.'" name="'.$name.'" id="'.$name.'_'.$option['key'].'" value="'.$option['key'].'"'.($selected==$option['key']?' selected':'').'>';
+        echo '<label for="'.$name.'_'.$option['key'].'">'.$option['value'].'</label>';
+        echo '</div>';
+    }
+}
+
+function seb_build_radio_tag($options, $default, $selected=null, $name, $id=null, $class=null)
+{
+    seb_build_input_tag('radio', $options, $default, $selected, $name, $id, $class);
+}
+
+function seb_build_checkbox_tag($options, $default, $selected=null, $name, $id=null, $class=null)
+{
+    seb_build_input_tag('checkbox', $options, $default, $selected, $name, $id, $class);
+}
+
 /**
  * Display in normal size a x2 image.
  */
@@ -525,3 +624,35 @@ function vd($var, $label='')
     var_dump($var);
     echo '</pre>';
 }
+
+
+function seb_ajax_create_quotation_request()
+{
+    // Checks and dies if fails.
+    check_ajax_referer('new_quotation_request');
+
+    // Create new post.
+    $post_data = array(
+        'post_title'    => seb_get_the_firstname().' '.seb_get_the_lastname(),
+        'post_type'     => 'mc_request',
+        'post_status'   => 'publish'
+    );
+    $post_id = wp_insert_post( $post_data );
+
+    // Set meta values.
+    update_field('field_5d8b76fc4bad4', get_current_user_id()                    , $post_id);
+    update_field('field_5d8b77494bad5', intval(seb_POST('brand'))                , $post_id); 
+    update_field('field_5d8b78543399f', intval(seb_POST('product'))              , $post_id);
+    update_field('field_5d8b7869339a0', intval(seb_POST('quantity'))             , $post_id);
+    update_field('field_5d8b7883339a1', seb_POST('date')                         , $post_id);
+    update_field('field_5d8b78be339a2', sanitize_text_field(seb_POST('message')) , $post_id);
+
+    wp_mail(
+        get_bloginfo('admin_email'),
+        "Gros client veut du produit mamène 💵",
+        ''
+    );
+
+    wp_send_json($post_id);
+}
+add_action( 'wp_ajax_create_quotation_request', 'seb_ajax_create_quotation_request' );

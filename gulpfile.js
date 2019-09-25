@@ -35,8 +35,10 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
     return gulp.src([
-            //'./node_modules/slick-carousel/slick/slick.js', // Uncomment import @ bottom of style.scss
+            './node_modules/slick-carousel/slick/slick.js', // Uncomment import @ bottom of style.scss
             //'./assets/js/burger.js',
+            './assets/js/backlink.js',
+            './assets/js/request_pane.js',
             './assets/js/seb.js'
         ])
         .pipe(sourcemaps.init())
