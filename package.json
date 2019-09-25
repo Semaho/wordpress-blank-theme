@@ -8,18 +8,15 @@
     },
     "author": "Sébastien Vignol",
     "license": "ISC",
-    "browserslist": [
-        "defaults"
-    ],
-    "devDependencies": {
-        "autoprefixer": "latest",
+    "browserslist": ["defaults"],
+    "devDependencies" : {
         "gulp": "^4.0.0",
+        "gulp-sass": "latest",
+        "gulp-postcss": "latest",
+        "autoprefixer": "latest",
         "gulp-concat": "latest",
         "gulp-cssnano": "latest",
-        "gulp-postcss": "latest",
-        "gulp-sass": "latest",
         "gulp-sourcemaps": "latest",
-        "gulp-uglify": "latest",
-        "slick-carousel": "^1.8.1"
+        "gulp-uglify": "latest"
     }
 }

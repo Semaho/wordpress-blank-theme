@@ -6,7 +6,7 @@
         <title><?php wp_title('|', true, 'right'); ?></title>
         <?php /* <meta name="theme-color" content="#"> */ ?>
 
-        <script type="text/javascript">var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';</script>
+        <?php /* <script type="text/javascript">var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';</script>*/ ?>
         <?php /* FAVICON        - Use Wordpress icon feature. Appearance > Customize > Site identity */ ?>
         <?php /* SOCIAL SHARING - Use plugin. */ ?>
 
@@ -15,13 +15,11 @@
 
     <body <?php body_class(); ?>>
 
-    <header class="header u-margin-md-h">
+    <header class="header">
         <div class="container">
             <a class="header__home" href="<?php echo site_url() ?>">
                 <img class="header__logo" alt="<?php bloginfo('name') ?> logo" src="<?php seb_img('logo.svg'); ?>" />
             </a>
-            <div class="header__cross">&times;</div>
-            <img class="header__company" src="<?php the_field('company_logo', 'option'); ?>" alt="<?php the_field('company_name', 'option'); ?>">
             <div class="header__spacer"></div>
             <?php /*
             // Main menu.
@@ -43,5 +41,3 @@
             */ ?>
         </div>
     </header>
-
-    <section class="container">

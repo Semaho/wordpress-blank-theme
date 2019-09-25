@@ -4,17 +4,6 @@
         align-items: center;
     }
 
-    &__logo {
-        display: block;
-        width: 320px;
-    }
-
-    &__cross {
-        font-size: 3rem;
-        margin: 0 40px;
-        opacity: 0.3;
-    }
-
     &__spacer {
         flex-grow: 1;
     }
@@ -33,10 +22,5 @@
                 padding: 0 1.5em;
             }
         }
-    }
-
-    &__company {
-        max-width: 320px;
-        max-height: 60px;    
     }
 }

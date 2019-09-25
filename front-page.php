@@ -3,14 +3,11 @@ get_header();
 
 if ( have_posts() )
 {
-    the_post(); ?>
-    
-    <div class="hello richtext u-margin-md-h">
-        <?php the_content() ?>
-    </div>
-
-    <?php get_template_part('shop') ?>
-<?php
+    the_post();
+    the_content(); 
 }
+
+// If using ACF Layout Engine.
+// get_template_part( 'layout-engine/layout', 'engine' );
 
 get_footer();

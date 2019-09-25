@@ -1,7 +1,7 @@
 $rem        : 16px;
 $font-color : #333;
 $font-family: "Helvetica Neue", "Helvetica", sans-serif;
-$icomoon-font-path: "../../fonts/icomoon/fonts";
+//$icomoon-font-path: "../../fonts/icomoon/fonts";
 
 $thin       : 100;
 $extralight : 200;
@@ -14,14 +14,13 @@ $bold       : 700;
 $extrabold  : 800;
 $ultrabold  : 900;
 
-$primary  : #e42312;
-$secondary: #034ea2;
+$primary  : #333;
+$secondary: #000;
 $dark     : #333;
 $light    : #FFF;
-$gray     : #969696;
 
 $reading  : 680px;
-$container: 1280px;
+$container: 1200px;
 
 $grid-gap : 3rem;
 
@@ -29,4 +28,4 @@ $spacing-small  : 2rem;
 $spacing-medium : 4rem;
 $spacing-large  : 6rem;
 
-$input-radius: 4px;
+$input-radius: 2px;
