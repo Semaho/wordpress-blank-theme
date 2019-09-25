@@ -1,31 +1,57 @@
-form {
+.form {
+
+    &__set {
+        border: none;
+
+        & + & {
+            margin-top: 2rem;
+        }
+
+        &__legend {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1em;
+        }
+    }
+
+    &__group {
+        & + & {
+            margin-top: 2rem;
+        }
+    }
 
     label {
-        font-size: 0.75rem;
-        letter-spacing: 1.2px;
-        color: #676c77;
-        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    &__label {
+        font-weight: $semibold;
+        margin-bottom: 0.5em;
+        display: block;
     }
 
     input[type=text],
     input[type=email],
     input[type=password],
     input[type=tel],
+    input[type=number],
+    input[type=date],
     select,
     textarea {
         -webkit-appearance: none;
         appearance: none;
         width: 100%;
-        border: 1px solid $primary;
+        border: 1px solid $gray;
         border-radius: $input-radius;
         font-size: 1rem;
         line-height: 2rem;
         background: $light;
         display: block;
+        padding: 0.2em 0.7em;
 
         &:active,
         &:focus {
-            border-bottom: 1px solid $primary;
+            border-color: $dark;
         }
     }
 
@@ -35,31 +61,39 @@ form {
         @extend .btn;
     }
 
+    &__radio {
+        & + & {
+            margin-top: 0.8em;
+        }
+    }
+
     // <input> + <label>
     
-    // input[type=checkbox] {
-    //     position: absolute;
-    //     width: 0; height: 0;
-    //     opacity: 0;
+    input[type=checkbox] {
+        position: absolute;
+        width: 0; height: 0;
+        opacity: 0;
 
-    //     & + label {
-    //         padding-left: 30px;
-    //         position: relative;
-    //         display: inline-block;
+        & + label {
+            padding-left: 1.8em;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
 
-    //         &::before {
-    //             font-family: $icomoon-font-family !important;
-    //             position: absolute;
-    //             top: 1px; left: 0;
-    //             font-size: 18px;
-    //             content: $icon-checkbox;
-    //         }
-    //     }
+            &::before {
+                font-family: $icomoon-font-family !important;
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-size: 1.3em;
+                content: $icon-checkbox;
+            }
+        }
         
-    //     &:checked + label::before {
-    //         content: $icon-checkedbox;
-    //     }
-    // }
+        &:checked + label::before {
+            content: $icon-checkedbox;
+        }
+    }
 
     .group {
         margin-top: 2.6rem;

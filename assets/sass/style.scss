@@ -9,7 +9,7 @@
  **************************************/
 
 // @import "../../node_modules/...";
-// @import "../../node_modules/slick-carousel/slick/slick.scss";
+@import "../../node_modules/slick-carousel/slick/slick.scss";
 
 
 /**************************************
@@ -17,7 +17,8 @@
  **************************************/
 
 @import "flexgrid";
-//@import "../fonts/icomoon/style.scss";
+@import "spacing";
+@import "../fonts/icomoon/style.scss";
 
 
 /**************************************
@@ -141,6 +142,21 @@ img {
     }
 }
 
+.backlink {
+    color: $secondary;
+    display: inline-block;
+    margin-bottom: 10px;
+    border-bottom: 1px solid transparent;
+    
+    &:focus, &:hover {
+        border-bottom: 1px solid $secondary;
+    }
+
+    i {
+        font-size: 0.7em;
+    }
+}
+
 
 /**************************************
  * COMPONENTS
@@ -148,7 +164,12 @@ img {
 
 // @import "burger";
 @import "button";
+@import "footer";
 @import "form";
 @import "header";
+@import "hello";
+@import "product";
+@import "request";
 @import "richtext";
+@import "shop";
 // @import "tree_menu";

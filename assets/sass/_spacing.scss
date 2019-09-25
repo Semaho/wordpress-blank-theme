@@ -14,6 +14,10 @@
 .u-margin-sm-left {
     margin-left: $spacing-small;
 }
+.u-margin-sm-h {
+    margin-top: $spacing-small;
+    margin-bottom: $spacing-small;
+}
 
 // Medium
 .u-margin-md {
@@ -30,6 +34,10 @@
 }
 .u-margin-md-left {
     margin-left: $spacing-medium;
+}
+.u-margin-md-h {
+    margin-top: $spacing-medium;
+    margin-bottom: $spacing-medium;
 }
 
 // Large
