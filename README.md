@@ -18,3 +18,7 @@ Run `gulp` to listen to sass and javascript files.
 They will be compiled in `/assets/dist/` folder, respectively in `css/style.min.css` and `js/scripts.min.js`.
 
 &nbsp;
+
+## TO-DO
+
+- the_custom_logo()

@@ -21,16 +21,18 @@
                 <img class="header__logo" alt="<?php bloginfo('name') ?> logo" src="<?php seb_img('logo.svg'); ?>" />
             </a>
             <div class="header__spacer"></div>
-            <?php /*
-            // Main menu.
-            $defaults = array(
-                'theme_location' => 'pages-menu',
-                'container'      => 'nav',
-                'menu_class'     => 'header__nav',
-                'fallback_cb'    => false
-            );
-            wp_nav_menu( $defaults );
-            */ ?>
+            <!-- <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" role="navigation"> -->
+                <?php /*
+                // Main menu.
+                $defaults = array(
+                    'theme_location' => 'pages-menu',
+                    'container'      => 'nav',
+                    'menu_class'     => 'header__nav',
+                    'fallback_cb'    => false
+                );
+                wp_nav_menu( $defaults );
+                */ ?>
+            <!-- </nav> -->
             <?php /*
             // Display WPML languages.
             <div class="langbar"><?php seb_the_languages(); ?></div>

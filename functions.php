@@ -134,7 +134,7 @@ add_action( 'init', 'seb_posttypes' );
 
 
 /**************************************
- * FUNCTIONS
+ * FILTERS
  **************************************/
 
 /**
@@ -171,6 +171,50 @@ function theme_name_wp_title( $title, $sep )
 }
 add_filter( 'wp_title', 'theme_name_wp_title', 10, 2 );
 
+
+/**
+ * Add CSS class to WPCF7
+ */
+
+function filter_wpcf7_form_class_attr($class)
+{
+    $class .= ' form';
+    return $class;
+}; 
+
+add_filter( 'wpcf7_form_class_attr', 'filter_wpcf7_form_class_attr', 10, 1 ); 
+
+
+
+/**
+ * Change default email sender name by sitename.
+ */
+
+function seb_sender_name( $original_email_from )
+{
+    return get_bloginfo('name');
+}
+
+add_filter( 'wp_mail_from_name', 'seb_sender_name');
+
+
+/**
+ * Add itemprop attribute to WP Menu items so they match schema.org recommendation.
+ */
+
+function seb_add_nav_menu_atts($atts, $item, $args)
+{
+    $atts['itemprop'] = 'url';
+    return $atts;
+}
+
+add_filter('nav_menu_link_attributes', 'seb_add_nav_menu_atts', 10, 3);
+
+
+
+/**************************************
+ * FUNCTIONS
+ **************************************/
 
 /**
  * Get posts by Post Type.
