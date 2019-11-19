@@ -14,4 +14,4 @@
 
 ## CHECKLIST
 
-[ ] Schema.org compatibility
+[ ] Schema.org compatibility — https://search.google.com/structured-data/testing-tool
