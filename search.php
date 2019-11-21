@@ -1,38 +1,36 @@
 <?php
 get_header(); ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<section class="container u-margin-lg-h">
 
-		<?php if ( have_posts() ) : ?>
+    <?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'seb' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
-			</header>
+        <header class="page-header">
+            <h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'seb' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
+        </header>
 
-			<?php
-			while ( have_posts() ) : the_post();
+        <?php
+        while ( have_posts() ) : the_post();
 
-				get_template_part( 'template-parts/content', 'search' );
+            get_template_part( 'template-parts/content', 'search' );
 
-			endwhile; ?>
+        endwhile; ?>
 
-        <div class="pagination">
-			<?php echo paginate_links(array(
-                'prev_text' => '<',
-                'next_text' => '>'
-            )); ?>
-        </div>
-        
-    <?php
+    <div class="pagination">
+        <?php echo paginate_links(array(
+            'prev_text' => '<',
+            'next_text' => '>'
+        )); ?>
+    </div>
+    
+<?php
 
-		else :
-			get_template_part( 'template-parts/content', 'none' );
+    else :
+        get_template_part( 'template-parts/content', 'none' );
 
-		endif;
-		?>
+    endif;
+    ?>
 
-		</main>
-	</section>
+</section>
 
 <?php get_footer(); ?>
