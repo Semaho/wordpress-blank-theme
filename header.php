@@ -17,9 +17,7 @@
 
     <header class="header">
         <div class="container">
-            <a class="header__home" href="<?php echo site_url() ?>">
-                <img class="header__logo" alt="<?php bloginfo('name') ?> logo" src="<?php seb_img('logo.svg'); ?>" />
-            </a>
+            <?php the_custom_logo() ?>
             <div class="header__spacer"></div>
             <!-- <nav itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" role="navigation"> -->
                 <?php /*

@@ -47,6 +47,7 @@ add_action( 'wp_enqueue_scripts', 'seb_add_theme_scripts' );
  * Theme Support.
  */
 
+add_theme_support('custom-logo');
 add_theme_support('post-thumbnails');
 add_theme_support( 'html5', array(
     'search-form',
