@@ -6,7 +6,7 @@
 ?>
 <?php get_header(); ?>
 
-<div class="container">
+<div class="container u-margin-lg-h">
 
     <section class="error-404 not-found">
         <header class="page-header">
