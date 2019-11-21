@@ -1,25 +1,25 @@
 <?php
+// Redirect all 404 to the home page.
+// header("HTTP/1.1 301 Moved Permanently");
+// header("Location: ".get_bloginfo('url'));
+// exit();
+?>
+<?php get_header(); ?>
 
-get_header(); ?>
+<div class="container">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+    <section class="error-404 not-found">
+        <header class="page-header">
+            <h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'seb' ); ?></h1>
+        </header>
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'seb' ); ?></h1>
-				</header>
+        <div class="page-content form">
+            <p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'seb' ); ?></p>
 
-				<div class="page-content">
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'seb' ); ?></p>
+            <?php get_search_form(); ?>
+        </div>
+    </section>
 
-					<?php get_search_form(); ?>
-				</div>
-			</section>
+</div>
 
-		</main>
-
-	</div>
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
