@@ -1,23 +1,15 @@
 <?php
 get_header(); ?>
 
-<div id="primary" class="content-area">
-	<main id="main" class="site-main" role="main">
-		<?php
-		while ( have_posts() ) : the_post();
+<section class="container u-margin-lg-h richtext">
 
-			get_template_part( 'template-parts/content', 'page' );
+    <?php if ( have_posts() ) : the_post(); ?>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) {
-				comments_template();
-			}
+        <h1><?php the_title() ?></h1>
+        <?php the_content() ?>
 
-		endwhile;
-		?>
+    <?php endif; ?>
 
-	</main>
-
-</div>
+</section>
 
 <?php get_footer(); ?>

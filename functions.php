@@ -483,7 +483,7 @@ function seb_image_3x($img_array, $class="")
 function seb_image_xx($multiplier, $img_array, $class="")
 {
     $ext = strtolower(pathinfo($img_array['url'], PATHINFO_EXTENSION));
-    $style = $ext === "svg" ? '' : 'style="width:'.($img_array['width']/$multiplier).'px;height:'.($img_array['height']/$multiplier).'px"';
+    $style = $ext === "svg" ? '' : 'style="width:'.($img_array['width']/$multiplier).'px"';
     echo '<img class="'.$class.'" src="'.$img_array['url'].'" '.$style.'>';
 }
 

@@ -1,16 +1,15 @@
 <?php
 /**
  * Template Name: &lt;name&gt;
+ * Minimum content. To be customized.
  */
 
-get_header(); ?>
+get_header();
 
-		<?php
-		if ( have_posts() ) : the_post();
+if ( have_posts() ) : the_post();
 
-			get_template_part( 'content', 'page' );
+    get_template_part( 'content', 'page' );
 
-		endif;
-		?>
+endif;
 
-<?php get_footer(); ?>
+get_footer(); ?>
