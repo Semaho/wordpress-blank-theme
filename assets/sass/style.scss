@@ -16,8 +16,8 @@
  * UTILITIES / LIBS
  **************************************/
 
-@import "flexgrid";
-//@import "../fonts/icomoon/style.scss";
+// @import "flexgrid";
+// @import "../fonts/icomoon/style.scss";
 
 
 /**************************************
@@ -31,7 +31,6 @@
 }
 
 html, body {
-    width: 100%;
     font-size: $rem;
     color: $font-color;
     font-family: $font-family;
@@ -42,15 +41,20 @@ html, body {
 a {
     text-decoration: none;
     color: inherit;
-}
-a img {border: none;}
 
-*:focus {outline: 0 !important;}
-
-select {
-    -webkit-appearance: none;
-    border-radius: 0;
+    img {border: none;}
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+
+    // Wordpress alignment classes.
+    &.alignleft {float: left;clear: both; margin: 15px 15px 15px 0;}
+    &.aligncenter {display: block; margin: 0 auto;clear: both; padding: 0 15px 15px 15px;}
+    &.alignright {float: right;clear: both; margin: 15px 0 15px 15px;}
+}
+
 
 /**************************************
  * GLOBAL CLASSES
@@ -65,15 +69,6 @@ select {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-
-    &.alignleft {float: left;clear: both; margin: 15px 15px 15px 0;}
-    &.aligncenter {display: block; margin: 0 auto;clear: both; padding: 0 15px 15px 15px;}
-    &.alignright {float: right;clear: both; margin: 15px 0 15px 15px;}
 }
 
 .tr {
@@ -111,36 +106,6 @@ img {
     }
 }
 
-.pad {padding: 50px;}
-
-
-/**************************************
- * THEME
- **************************************/
-
-.pagination {
-    margin-top: 30px;
-    
-    text-align: center;
-    span, a {
-        display: inline-block;
-        vertical-align: middle;
-        line-height: 1.9em;
-        padding: 0 10px;
-        border-radius: 3px;
-    }
-    
-    span {
-        background-color: $primary;
-        color: #fff;
-    }
-    
-    a:hover {
-        color: #fff;
-        background-color: lighten($primary, 50%);
-    }
-}
-
 
 /**************************************
  * COMPONENTS
@@ -150,5 +115,6 @@ img {
 @import "button";
 @import "form";
 @import "header";
+@import "pagination";
 @import "richtext";
 // @import "tree_menu";
