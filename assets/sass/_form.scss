@@ -29,6 +29,11 @@ form {
         }
     }
 
+    // Fix for IE, works as `appearance: none`.
+    select::-ms-expand {
+        display: none;
+    }
+
     input[type=submit],
     input[type=reset],
     button {
