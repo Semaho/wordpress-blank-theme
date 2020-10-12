@@ -10,13 +10,19 @@
     "license": "ISC",
     "browserslist": ["defaults"],
     "devDependencies" : {
-        "gulp": "^4.0.0",
-        "gulp-sass": "latest",
-        "gulp-postcss": "latest",
+        "@babel/core": "latest",
+        "@babel/preset-env": "latest",
         "autoprefixer": "latest",
+        "browser-sync": "latest",
+        "gulp": "^4.0.0",
+        "gulp-babel": "latest",
         "gulp-concat": "latest",
         "gulp-cssnano": "latest",
+        "gulp-postcss": "latest",
+        "gulp-sass": "latest",
         "gulp-sourcemaps": "latest",
-        "gulp-uglify": "latest"
+        "gulp-uglify": "latest",
+        "jquery": "latest",
+        "postcss": "latest"
     }
 }
