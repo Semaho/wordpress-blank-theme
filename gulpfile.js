@@ -21,8 +21,8 @@ const paths = {
         dest: './assets/dist/css/'      // Will be used by `dest()`.
     },
     js: {
-        src: 'assets/js/**/*.js',  // Will be used by `src()` and `watch()`.
-        dest: 'assets/dist/js/'    // Will be used by `dest()`.
+        src: './assets/js/**/*.js',  // Will be used by `src()` and `watch()`.
+        dest: './assets/dist/js/'    // Will be used by `dest()`.
     },
     php: {
         src: '**/*.php'
@@ -80,8 +80,8 @@ function styles()
 function scripts()
 {
     return gulp.src([
+            // Including jQuery is handled by seb_add_theme_scripts().
             //'./node_modules/slick-carousel/slick/slick.js', // Uncomment import @ bottom of style.scss
-            './node_modules/jquery/dist/jquery.slim.min.js',
             paths.js.src
         ])
         .pipe(sourcemaps.init())
