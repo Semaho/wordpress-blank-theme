@@ -59,21 +59,6 @@ add_theme_support( 'html5', array(
 
 
 /**
- * Add admin CSS (accent color on blocks title).
- */
-
-function my_custom_css()
-{
-    echo '<style>
-        .hndle.ui-sortable-handle, .acf-fc-layout-handle {background-color: #23282d !important;}
-        .hndle.ui-sortable-handle span, .acf-fc-layout-handle {color: #fff !important;}
-        .dashicons-location::before, .dashicons-tickets-alt::before, .dashicons-lightbulb::before {color: #00b9eb !important;}
-    </style>';
-}
-add_action('admin_head', 'my_custom_css');
-
-
-/**
  * Register menus.
  */
 
@@ -210,6 +195,24 @@ function seb_add_nav_menu_atts($atts, $item, $args)
 }
 
 add_filter('nav_menu_link_attributes', 'seb_add_nav_menu_atts', 10, 3);
+
+
+/**
+ * Remove inclusion of jQuery Migrate
+ */
+
+function dequeue_jquery_migrate( $scripts )
+{
+    if ( !is_admin() && !empty( $scripts->registered['jquery'] ) )
+    {
+        $scripts->registered['jquery']->deps = array_diff(
+            $scripts->registered['jquery']->deps,
+            [ 'jquery-migrate' ]
+        );
+    }
+}
+
+add_action( 'wp_default_scripts', 'dequeue_jquery_migrate' );
 
 
 
