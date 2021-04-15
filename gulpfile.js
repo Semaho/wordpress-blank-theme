@@ -111,4 +111,4 @@ function watchAll()
 exports.styles  = styles;
 exports.scripts = scripts;
 exports.build   = gulp.parallel(styles, scripts);
-exports.default = gulp.series(serve, watchAll);
+exports.default = gulp.series(styles, scripts, serve, watchAll);
