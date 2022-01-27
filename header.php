@@ -24,7 +24,7 @@
                 // Main menu.
                 $defaults = array(
                     'theme_location' => 'pages-menu',
-                    'container'      => 'nav',
+                    'container'      => 'div',
                     'menu_class'     => 'header__nav',
                     'fallback_cb'    => false
                 );
