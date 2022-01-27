@@ -23,6 +23,7 @@
         "gulp-sourcemaps": "latest",
         "gulp-uglify": "latest",
         "jquery": "latest",
-        "postcss": "latest"
+        "postcss": "latest",
+        "sass": "latest"
     }
 }
