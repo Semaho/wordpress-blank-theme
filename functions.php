@@ -242,12 +242,14 @@ function seb_get_posts_by_posttype($posttype, $limit=-1)
 
 /**
  * Echoes the thumbnail URL of the current post.
+ * These are the reserved image size names recognized by WordPress: 
+ * thumbnail, medium, medium_large, large and post-thumbnail.
  */
 
-function seb_the_thumbnail($id=0)
+function seb_get_the_thumbnail($size = "thumb", $id=0)
 {
     if (!$id) { $id = get_the_ID(); }
-    echo wp_get_attachment_url(get_post_thumbnail_id($id));
+    return wp_get_attachment_image_url(get_post_thumbnail_id($id), $size);
 }
 
 
@@ -257,7 +259,7 @@ function seb_the_thumbnail($id=0)
 
 function seb_the_dyn_cov($url='')
 {
-    if ( !$url ) { echo 'style="background-image:url(\'';seb_the_thumbnail();echo '\');"'; }
+    if ( !$url ) { echo 'style="background-image:url(\''.seb_get_the_thumbnail().'\');"'; }
     else { echo 'style="background-image:url(\''.$url.'\');"'; }
 }
 
