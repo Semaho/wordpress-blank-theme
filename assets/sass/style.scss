@@ -16,7 +16,6 @@
  * UTILITIES / LIBS
  **************************************/
 
-// @import "flexgrid";
 // @import "../fonts/icomoon/style.scss";
 
 
@@ -46,7 +45,7 @@ a {
     img {border: none;}
 }
 
-img {
+img, figure {
     max-width: 100%;
     height: auto;
 
