@@ -72,13 +72,19 @@ add_action( 'after_setup_theme', 'seb_theme_setup' );
 
 
 /**
- * JavaScript detection.
+ * Custom CSS for admin dashboard.
  */
 
-function seb_javascript_detection() {
-	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+function seb_admin_css()
+{
+    echo '<style>
+    #editor .postbox > .postbox-header {
+        background: #f0f0f0;
+    }
+    #postbox-container-2 {padding-bottom:100px;}
+    </style>';
 }
-//add_action( 'wp_head', 'seb_javascript_detection', 0 );
+add_action('admin_head', 'seb_admin_css');
 
 
 /**
