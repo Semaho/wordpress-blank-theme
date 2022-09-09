@@ -5,12 +5,5 @@ jQuery(function() {
 });
 */
 
-
-console.log(
-    '            ████ ████ ███ \n'+
-    '            █    █    █  █\n'+
-    '            ████ ███  ███ \n'+
-    '               █ █    █  █\n'+  
-    '            ████ ████ ███ \n'+
-    'http://sebastien.vignol.be'
-);
+const consoleStyle = "font-family:monospace;background-color:#3172a1;padding:2px 6px;color:white;border-radius:3px;";
+console.log("%cWeb Development", consoleStyle, "https://sebastien.vignol.be");
