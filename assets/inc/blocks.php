@@ -29,28 +29,17 @@ add_filter( 'block_categories', 'seb_block_categories', 10, 2 );
 
 function register_acf_block_types()
 {
-    // Richtext.
-    acf_register_block_type(array(
-        'name'              => 'richtext',
-        'title'             => __('Richtext', 'seb'),
-        'description'       => __('Richtext', 'seb'),
-        'render_template'   => 'template-parts/blocks/richtext.php',
-        'category'          => 'custom-blocks',
-        'icon'              => 'align-left',
-        'mode'              => 'edit'
-    ));
+    register_block_type( __DIR__ . '/../../blocks/office' );
 }
+add_action('init', 'register_acf_block_types');
 
+
+/**
+ * Enqueue style for preview.
+ */
 
 function blocks_enqueue_scripts_for_editor()
 {
-    wp_enqueue_style( 'theme', get_stylesheet_directory_uri() . '/assets/dist/css/style.min.css', array(), CSS_VERSION, 'all');
+    wp_enqueue_style( 'theme', get_stylesheet_directory_uri() . '/assets/dist/scss/style.css', array(), CSS_VERSION, 'all');
 }
-
-
-// Check if function exists and hook into setup.
-if( function_exists('acf_register_block_type') )
-{
-    add_action('acf/init', 'register_acf_block_types');
-    add_action('enqueue_block_editor_assets', 'blocks_enqueue_scripts_for_editor');
-}
+add_action('enqueue_block_editor_assets', 'blocks_enqueue_scripts_for_editor');

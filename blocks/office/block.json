@@ -1,0 +1,16 @@
+{
+    "name": "acf/office",
+    "title": "Office",
+    "description": "Show info and map of an office",
+    "style": [],
+    "category": "custom-blocks",
+    "icon": "building",
+    "keywords": ["office", "address", "map", "building"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "office.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

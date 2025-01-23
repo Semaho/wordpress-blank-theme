@@ -11,6 +11,7 @@
 
 // Reminder : when file not found, 'include' throws a warning where 'require' throws a fatal error.
 include get_stylesheet_directory() . '/assets/inc/disable_emoji.php';
+include get_stylesheet_directory() . '/assets/inc/disable_comments.php';
 include get_stylesheet_directory() . '/assets/inc/shortcodes.php';
 // include get_stylesheet_directory() . '/assets/inc/blocks.php'; // ACF Gutenberg blocks.
 
@@ -249,10 +250,14 @@ function seb_get_posts_by_posttype($posttype, $limit=-1)
 /**
  * Echoes the thumbnail URL of the current post.
  * These are the reserved image size names recognized by WordPress: 
- * thumbnail, medium, medium_large, large and post-thumbnail.
+ * - thumbnail    : 150px x 150px (cropped to fit)
+ * - medium       : 300px max width or height (proportional scaling)
+ * - medium_large : 768px max
+ * - large        : 1024px max
+ * - full         : original size
  */
 
-function seb_get_the_thumbnail($size = "thumb", $id=0)
+function seb_get_the_thumbnail($size = "thumbnail", $id=0)
 {
     if (!$id) { $id = get_the_ID(); }
     return wp_get_attachment_image_url(get_post_thumbnail_id($id), $size);
