@@ -4,34 +4,33 @@
     //min-width: 130px;
     text-align: center;
     //font-size: 1rem;
-    font-family: $font-family;
-    font-weight: $regular;
+    font-family: var(--font-family);
+    font-weight: var(--regular);
     line-height: 1em;
-    border: 1px solid $primary;
-    border-radius: $input-radius;
+    border: 1px solid var(--primary);
+    border-radius: var(--input-radius);
     cursor: pointer;
-    background-color: $primary;
+    background-color: var(--primary);
     color: #fff;
     -webkit-appearance: none;
     appearance: none;
-    
-    @extend .tr;
+    transition: 0.2s;
 
     &:hover, &:focus {
-        background-color: darken($primary, 10%);
-        border-color: darken($primary, 10%);
-        color: $light;
+        background-color: var(--primary-500);
+        border-color: var(--primary-500);
+        color: var(--light);
     }
 
     &.btn--o {
-        border-color: $primary;
+        border-color: var(--primary);
         background-color: transparent;
-        color: $primary;
+        color: var(--primary);
 
         &:hover, &:focus {
-            background-color: $primary;
-            border-color: $primary;
-            color: $light;
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--light);
         }
     }
 }
@@ -52,11 +51,11 @@
     }
 
     .btn:first-child {
-        border-radius: $input-radius 0 0 $input-radius;
+        border-radius: var(--input-radius) 0 0 var(--input-radius);
     }
 
     .btn:last-child {
-        border-radius:0 $input-radius $input-radius 0;
+        border-radius: 0 var(--input-radius) var(--input-radius) 0;
     }
 }
 

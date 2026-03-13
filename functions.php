@@ -38,7 +38,7 @@ define('CSS', get_stylesheet_directory_uri().'/assets/css/'); // Template css fo
  */
 function seb_add_theme_scripts()
 {
-    wp_enqueue_style( 'theme', get_stylesheet_directory_uri() . '/assets/dist/css/style.min.css', array(), CSS_VERSION, 'all');
+    wp_enqueue_style( 'theme', get_stylesheet_directory_uri() . '/assets/dist/css/style.css', array(), CSS_VERSION, 'all');
 
     wp_enqueue_script( 'scripts', get_stylesheet_directory_uri() . '/assets/dist/js/scripts.min.js', array ( 'jquery' ), CSS_VERSION, true);
 }

@@ -4,26 +4,14 @@
     "description": "Sébastien's Wordpress boilerplate",
     "main": "gulpfile.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "sass:watch": "sass --watch assets/scss:assets/dist/css --style=compressed --source-map",
+        "sass:compile": "sass assets/scss:assets/dist/css --style=compressed --source-map"
     },
     "author": "Sébastien Vignol",
     "license": "ISC",
     "browserslist": ["defaults"],
     "devDependencies" : {
-        "@babel/core": "latest",
-        "@babel/preset-env": "latest",
-        "autoprefixer": "latest",
-        "browser-sync": "latest",
-        "gulp": "^4.0.0",
-        "gulp-babel": "latest",
-        "gulp-concat": "latest",
-        "gulp-cssnano": "latest",
-        "gulp-postcss": "latest",
-        "gulp-sass": "latest",
-        "gulp-sourcemaps": "latest",
-        "gulp-uglify": "latest",
-        "jquery": "latest",
-        "postcss": "latest",
         "sass": "latest"
     }
 }

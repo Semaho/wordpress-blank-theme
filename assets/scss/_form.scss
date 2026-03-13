@@ -1,3 +1,5 @@
+@use "button";
+
 form {
 
     label {
@@ -16,16 +18,16 @@ form {
         -webkit-appearance: none;
         appearance: none;
         width: 100%;
-        border: 1px solid $primary;
-        border-radius: $input-radius;
+        border: 1px solid var(--primary);
+        border-radius: var(--input-radius);
         font-size: 1rem;
         line-height: 2rem;
-        background: $light;
+        background: var(--light);
         display: block;
 
         &:active,
         &:focus {
-            border-bottom: 1px solid $primary;
+            border-bottom: 1px solid var(--primary);
         }
     }
 
@@ -53,16 +55,16 @@ form {
     //         display: inline-block;
 
     //         &::before {
-    //             font-family: $icomoon-font-family !important;
+    //             font-family: var(--icomoon-font-family !important;
     //             position: absolute;
     //             top: 1px; left: 0;
     //             font-size: 18px;
-    //             content: $icon-checkbox;
+    //             content: var(--icon-checkbox;
     //         }
     //     }
         
     //     &:checked + label::before {
-    //         content: $icon-checkedbox;
+    //         content: var(--icon-checkedbox;
     //     }
     // }
 
@@ -79,39 +81,18 @@ form {
     
         input:not([type="submit"]) {
             flex-grow: 1;
-            border-top-left-radius: $input-radius;
+            border-top-left-radius: var(--input-radius);
             border-top-right-radius: 0;
-            border-bottom-left-radius: $input-radius;
+            border-bottom-left-radius: var(--input-radius);
             border-bottom-right-radius: 0;
         }
     
         input[type="submit"] {
             border-top-left-radius: 0;
-            border-top-right-radius: $input-radius;
+            border-top-right-radius: var(--input-radius);
             border-bottom-left-radius: 0;
-            border-bottom-right-radius: $input-radius;
+            border-bottom-right-radius: var(--input-radius);
             border: none;
-        }
-    }
-
-    .divided {
-        display: flex;
-        flex-wrap: wrap;
-
-        @include phone {
-            display: block;
-        }
-
-        .group {
-            flex-basis: calc(50% - 37px);
-
-            &:nth-child(even) {
-                margin-left: 74px;
-
-                @include phone {
-                    margin-left: 0;
-                }
-            }
         }
     }
 }

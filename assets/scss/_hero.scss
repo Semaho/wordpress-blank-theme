@@ -1,0 +1,4 @@
+.hero {
+    height: min(calc(100vh - 100px), 800px);
+    border-radius: var(--radius-l);
+}

@@ -1,22 +1,24 @@
-@import 'variables';
-@import 'mixins';
+// Global.
+
+@use 'variables';
+@use 'mixins';
+
+// Components.
+
+@use "button";
+@use "form";
+@use "header";
+@use "richtext";
+@use "hero";
+// @use "pagination";
+// @use "burger";
+// @use "tree_menu";
+
+// Utilities.
+
+@use "spacing";
 
 .xdebug-var-dump,.xdebug-var-dump *, .xdebug-error, .xdebug-error * {font-size: 16px !important;}
-
-
-/**************************************
- * VENDORS
- **************************************/
-
-// @import "../../node_modules/...";
-// @import "../../node_modules/slick-carousel/slick/slick.scss";
-
-
-/**************************************
- * UTILITIES / LIBS
- **************************************/
-
-// @import "../fonts/icomoon/style.scss";
 
 
 /**************************************
@@ -30,12 +32,16 @@
 }
 
 html, body {
-    font-size: $rem;
-    color: $font-color;
-    font-family: $font-family;
+    font-size: var(--rem);
+    color: var(--font-color);
+    font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overscroll-behavior-y: none;
+}
+
+body {
+    padding: var(--gutter);
 }
 
 a {
@@ -77,44 +83,37 @@ img, figure {
 
 .container {
     position: relative;
-    width: $container;
+    width: var(--container);
     margin-left: auto;
     margin-right: auto;
 	
-    @media screen and (max-width: #{$container+2*$rem}) {
+    @media screen and (max-width: 1200px) {
         width: 100%;
-        padding-left: $rem;
-        padding-right: $rem;
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
     }
 }
 
 .container-fluid {
-    padding-left: $rem;
-    padding-right: $rem;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
 }
 
 .reading {
     position: relative;
-    width: $reading;
+    width: var(--reading);
     margin-left: auto;
     margin-right: auto;
 	
-    @media screen and (max-width: #{$reading+2*$rem}) {
+    @media screen and (max-width: 900px) {
         width: 100%;
-        padding-left: $rem;
-        padding-right: $rem;
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
     }
 }
 
 
 /**************************************
- * COMPONENTS
+ * THEME
  **************************************/
 
-// @import "burger";
-@import "button";
-@import "form";
-@import "header";
-@import "pagination";
-@import "richtext";
-// @import "tree_menu";

@@ -6,7 +6,7 @@
     }
 
     .menu-item {
-        color: $primary;
+        color: var(--primary);
 
         a {
             display: inline-block;
@@ -18,7 +18,7 @@
         }
 
         &.current-menu-item > a {
-            font-weight: $semibold;
+            font-weight: var(--semibold);
         }
     }
 

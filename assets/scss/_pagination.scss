@@ -11,12 +11,12 @@
     }
     
     span {
-        background-color: $primary;
+        background-color: var(--primary);
         color: #fff;
     }
     
     a:hover {
         color: #fff;
-        background-color: lighten($primary, 50%);
+        background-color: var(--primary-200);
     }
 }
